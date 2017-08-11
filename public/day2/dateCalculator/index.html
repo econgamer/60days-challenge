@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Day</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+    function computerDate(){
+      var startDate = document.getElementById('start').value;
+      var m1 = moment(startDate);
+
+      var endDate = document.getElementById('end').value;
+      var m2 = moment(endDate)
+
+      var add = document.getElementById('check').checked;
+
+      console.log(startDate);
+      console.log('hihi');
+      console.log(m1);
+      var diff = Math.abs( m1.diff(m2) );
+      console.log(moment.duration(diff).format("d [days]"));
+      var result = moment.duration(diff).format("D");
+
+      if(add){
+        result ++;
+      }
+
+      document.getElementById('duration').innerHTML = result > 1 ? result + "  days": result + "  day";
+    }
+
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Date Duration</h1>
+      <div class="form-group">
+        <label for="start">Start Date</label>
+        <p><input id="start" type="date" /></p>
+      </div>
+      <div class="form-group">
+        <label for="end">End Date</label>
+        <p><input id="end" type="date" onchange="" /></p>
+      </div>
+      <div class="form-group">
+        <p><input type="checkbox" id="check" value="add">Include the starting date?</p>
+      </div>
+
+      <div class="form-group">
+        <p>How many day(s): <span><strong id="duration"></strong></span> </p>
+      </div>
+
+
+      <p><button class="btn btn-default" onclick="computerDate()">Calculate</button></p>
+    </div>
+
+  </body>
+
+</html>
