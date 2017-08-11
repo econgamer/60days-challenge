@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Circles</title>
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/paperscript" canvas="myCanvas">
+
+    // Create a symbol from the path:
+
+    var headPositionX = Math.random() * 1900;  //750
+    var headPositionY = Math.random() * 900;  //870
+    var headRadius = 50;
+    var bodyLength = 10;
+    var bodyWidth = 20;
+    var amount = 4;
+    var number = 6;
+
+    var animalCreate = function() {
+
+      var randomY = Math.random() * 0.1;
+      var randomX = Math.random() * 0.1;
+
+      headPositionX = Math.random() * view.size.width;
+      headPositionY = Math.random() * view.size.height;
+      var myHead = new Path.Circle(new Point(headPositionX, headPositionY), headRadius);
+      myHead.fillColor = 'blue';
+      //myHead.selected = true;
+      myHead.removeSegment(3);
+      myHead.opacity = Math.random() * 1 + 0.2;
+
+      var myBody = new Path();
+      myBody.strokeColor = 'white';
+      myBody.strokeWidth = 3.5;
+      myBody.add(new Point(headPositionX, headPositionY+ headRadius/2 - 2));
+      myBody.add(new Point(headPositionX + bodyWidth, headPositionY+ headRadius/2 + bodyLength));
+      myBody.add(new Point(headPositionX, headPositionY+ headRadius/2 + bodyLength * 2));
+      myBody.add(new Point(headPositionX + bodyWidth, headPositionY+ headRadius/2 + bodyLength * 3));
+      myBody.add(new Point(headPositionX, headPositionY+ headRadius/2 + bodyLength * 4));
+      myBody.opacity = 0.2;
+
+      //myBody.selected = true;
+
+      var myBody2 = new Path();
+      myBody2.strokeColor = 'white';
+      myBody2.strokeWidth = 3.5;
+      myBody2.add(new Point(headPositionX + 20, headPositionY+ headRadius/2 - 3));
+      myBody2.add(new Point(headPositionX + bodyWidth  + 20, headPositionY+ headRadius/2 + bodyLength));
+      myBody2.add(new Point(headPositionX + 20, headPositionY+ headRadius/2 + bodyLength * 2));
+      myBody2.add(new Point(headPositionX + bodyWidth + 20, headPositionY+ headRadius/2 + bodyLength * 3));
+      myBody2.add(new Point(headPositionX + 20, headPositionY+ headRadius/2 + bodyLength * 4));
+      myBody2.opacity = 0.2
+      //myBody2.selected = true;
+
+      var myBody3 = new Path();
+      myBody3.strokeColor = 'white';
+      myBody3.strokeWidth = 3.5;
+      myBody3.add(new Point(headPositionX - 30, headPositionY+ headRadius/2 - 4));
+      myBody3.add(new Point(headPositionX + bodyWidth  - 30, headPositionY+ headRadius/2 + bodyLength));
+      myBody3.add(new Point(headPositionX - 30, headPositionY+ headRadius/2 + bodyLength * 2));
+      myBody3.add(new Point(headPositionX + bodyWidth - 30, headPositionY+ headRadius/2 + bodyLength * 3));
+      myBody3.add(new Point(headPositionX - 30, headPositionY+ headRadius/2 + bodyLength * 4));
+      myBody3.opacity = 0.2
+      //myBody3.selected = true;
+
+
+      return{
+        myHead: myHead,
+        myBody: myBody,
+        myBody2: myBody2,
+        myBody3: myBody3,
+        randomX: randomX,
+        randomY: randomY
+      }
+    }
+
+    // var animal = new animalCreate();
+    // var animal2 = new animalCreate();
+    // animals.push(animal);
+    // animals.push(animal2);
+    var animals = [];
+    for(var num = 0; num <= number; num ++){
+      animals.push(new animalCreate());
+    }
+
+
+    setInterval(function() {
+
+        x = (Math.floor(Math.random() * animals.length));
+        console.log(x);
+        animals[x].randomY = (Math.random() - 0.5) * 0.15;
+        animals[x].randomY = (Math.random() - 0.5) * 0.15;
+
+
+      //console.log("RandomX: " + randomX);
+      //console.log("RandomY: " + randomY);
+
+    }, 2000);
+
+
+    function onFrame(event) {
+      for(var x = 0; x < animals.length; x++){
+        // Loop through the segments of the path:
+      	for (var i = 1; i <= amount; i++) {
+            var segment = animals[x].myBody.segments[i];
+            var segment2 = animals[x].myBody2.segments[i];
+            var segment3 = animals[x].myBody3.segments[i];
+
+
+      		// A cylic value between -1 and 1
+      		var sinus = Math.sin(event.time * 1 + i);
+
+      		// Change the y position of the segment point:
+      		segment.point.x = sinus * animals[x].randomY * 80 + animals[x].myHead.position.x;
+          segment2.point.x = sinus * animals[x].randomX * 80 + animals[x].myHead.position.x + 20;
+          segment3.point.x = sinus * animals[x].randomY * 80 + animals[x].myHead.position.x - 30;
+          animals[x].myHead.segments[0].point.x = sinus * 3.5 + animals[x].myHead.position.x - 50;
+          animals[x].myHead.segments[1].point.x = sinus * 3.5 + animals[x].myHead.position.x;
+
+
+
+            var sinus = Math.abs(Math.sin(event.time * 30));
+
+            animals[x].myBody.position.y -= animals[x].randomY * sinus;
+            animals[x].myBody2.position.y -= animals[x].randomY * sinus;
+            animals[x].myBody3.position.y -= animals[x].randomY * sinus ;
+            animals[x].myHead.position.y -= animals[x].randomY * sinus;
+
+            animals[x].myBody.position.x -= animals[x].randomX * sinus;
+            animals[x].myBody2.position.x -= animals[x].randomX * sinus;
+            animals[x].myBody3.position.x -= animals[x].randomX * sinus;
+            animals[x].myHead.position.x -= animals[x].randomX * sinus;
+
+            animals[x].myHead.fillColor.hue += animals[x].randomY;
+      	}
+      }
+
+
+
+    }
+    	// Uncomment the following line and run the script again
+    	// to smooth the path:
+    	// path.smooth();
+
+
+    // function onFrame(event) {
+      // Normalise the event.count property to a 0-359 scale
+      // then apply some trigonometry so we get some smoothed values
+      // just like going round the edge of a circle
+      // var rectPosition = (1 + Math.cos((event.count * 2 % 360)
+      //   * (Math.PI / 180))) * 100 + 500;
+      //
+      // var y = (Math.abs(Math.sin((event.count * 2 % 360)
+      //   * (Math.PI / 180)))) * 80;
+      // platform.position.x = rectPosition;
+      //
+      // var playerPosition = (Math.abs(Math.sin((event.count * 2 % 360)
+      //   * (Math.PI / 180)))) * 80;
+
+      // var sinus = Math.abs(Math.sin(event.time * 3));
+      //
+      // animal.position.x += sinus;
+      // myBall.position.x = x;
+      // myBall.position.y = 90 - y;
+    // }
+
+
+
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" resize></canvas>
+  </body>
+</html>
