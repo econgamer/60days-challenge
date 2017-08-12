@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <meta charset="utf-8" />
+    <title>Wikipedia - API</title>
+  </head>
+    <body>
+      <div class="main-div">
+        <h1>Wikipedia - API</h1>
+        <p>Search whatever you want</p>
+        <a href="https://en.wikipedia.org/wiki/Main_Page"><img src="wiki-logo.png" /></a>
+
+        <input type="text" id="searchTerm" placeholder="Enter keywords" />
+        <button id="search" type="button" class="btn">Search</button>
+
+        <ul class="result" id="output"></ul>
+      </div>
+
+    </body>
+
+      <script>
+        $(document).ready(function() {
+          $('#search').click(function(){
+            var searchTerm = $('#searchTerm').val();
+
+            var url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${searchTerm}&format=json&callback=?`;
+
+            $.ajax({
+              type:"GET",
+              url:url,
+              async:false,
+              dataType:"json",
+              success: function(data){
+                $('#output').html('');
+                for(var i = 0; i < data[1].length; i++){
+                  $('#output').prepend(`<li><a href="${data[3][i]}">${data[1][i]}</a>${data[2][i]}</li><br>`)
+                }
+
+                $('#searchTerm').val('');
+              },
+              error: function(e){
+                alert("Error");
+              }
+            });
+
+          });
+
+          $('#searchTerm').keypress(function(key){
+            if(key.which === 13){
+              $('#search').click();
+            };
+          })
+
+
+        });
+      </script>
+
+
+
+
+
+</html>
