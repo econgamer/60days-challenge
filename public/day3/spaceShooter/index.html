@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+  <div id="background"></div>
+  <div id="player"></div>
+  <div id="laser"></div>
+  <div id="score"></div>
+  <div id="gameOver">GAME OVER</div>
+  <script>
+
+    var UP_KEY = 87;
+    var DOWN_KEY = 83;
+    var LEFT_KEY = 65;
+    var RIGHT_KEY = 68;
+    var SPACE_KEY = 32;
+    var lastLoopTime = 0;
+    var playerSpeed = 5;
+    var maxSize = 50;  //for enemySpawn rate
+    var score = 0;
+    var level = 0;
+
+    // var player = {
+    //   id: 'player',
+    //   positionX: 250,
+    //   positionY: 450,
+    //   width: 20,
+    //   height: 20
+    // }
+
+    var controller = {};
+    var enemies = [];
+    var player = createObj('player',250,450,20,20);
+    console.log(player);
+    var laser = createObj('laser', 0, -120, 2, 50);
+
+
+    function setPosition(sprite){
+      var e = document.getElementById(sprite.id);
+      e.style.left = sprite.positionX + 'px';
+      e.style.top = sprite.positionY + 'px';
+    }
+
+    function createObj(id, positionX, positionY, width, height){
+      var result = {id, positionX, positionY, width, height};
+      return result;
+    }
+
+
+    function toggleKey(keyCode, isPressed){
+      if(keyCode === UP_KEY){
+        controller.up = isPressed;
+      }
+      if(keyCode === DOWN_KEY){
+        controller.down = isPressed;
+      }
+      if(keyCode === LEFT_KEY){
+        controller.left = isPressed;
+      }
+      if(keyCode === RIGHT_KEY){
+        controller.right = isPressed;
+      }
+      if(keyCode === SPACE_KEY){
+        controller.fire = isPressed;
+      }
+    }
+
+    function handleControls(){
+      if(controller.up){
+        player.positionY -= playerSpeed;
+      }
+      if(controller.down){
+        player.positionY += playerSpeed;
+      }
+      if(controller.left){
+        player.positionX -= playerSpeed;
+      }
+      if(controller.right){
+        player.positionX += playerSpeed;
+      }
+
+      if(controller.fire && laser.positionY <= -120){
+        laser.positionX = player.positionX + 9;
+        laser.positionY = player.positionY - laser.height;
+      }
+
+      ensureBounds(player);
+    }
+
+    function checkCollisions(){
+      for(var i = 0; i < enemies.length; i++){
+        if(intersects(laser, enemies[i])){
+          var element = document.getElementById(enemies[i].id);
+          element.style.visibility = 'hidden';
+          element.parentNode.removeChild(element);
+          enemies.splice(i, 1);
+          i--;
+          laser.positionY = -laser.height;
+          score += 100;
+        }else if(intersects(player, enemies[i])){
+            gameOver();
+        }else if(enemies[i].positionY + enemies[i].height >= 500){
+            var element = document.getElementById(enemies[i].id);
+            element.style.visibility = 'hidden';
+            element.parentNode.removeChild(element);
+            enemies.splice(i, 1);
+            i--;
+        }
+      }
+    }
+
+    function gameOver(){
+      var element = document.getElementById(player.id);
+      element.style.visibility = 'hidden';
+      element = document.getElementById('gameOver');
+      element.style.visibility = 'visible';
+    }
+
+
+    function updatePosition(){
+      setPosition(player);
+      setPosition(laser);
+      for(var x = 0; x < enemies.length; x++){
+        setPosition(enemies[x]);
+      }
+
+      for(var i =0; i < enemies.length; i++){
+        enemies[i].positionY += 4;
+        enemies[i].positionX += getRandom(7) - 3;
+        ensureBounds(enemies[i], true);
+      }
+
+      laser.positionY -= 12;
+
+      //score set up
+      var scoreElement = document.getElementById('score');
+      scoreElement.innerHTML = 'SCORE: ' + score;
+    }
+
+    function addEnemy(){
+      console.log(level);
+      var enemiesRate = 50;
+      if(level > 200){
+        enemiesRate = 5;
+      }else if(level > 100){
+        enemiesRate = 20;
+      }else if(level > 50){
+        enemiesRate = 50;
+      }
+
+      if(getRandom(enemiesRate) == 0){
+        var name = 'enemy' + getRandom(1000000);
+        var enemy = createObj(name, getRandom(450), -100, 30, 30);
+
+        var element = document.createElement('div');
+        element.id = enemy.id;
+        element.className = 'enemy';
+        document.children[0].appendChild(element);
+
+        enemies[enemies.length] = enemy;  //very good code
+      }
+    }
+
+    function getRandom(maxSize){
+      return parseInt(Math.random() * maxSize);
+    }
+
+    function loop(){
+      if(new Date().getTime() -  lastLoopTime> 40){
+        handleControls();
+        updatePosition();
+        checkCollisions();
+
+        addEnemy();
+
+        level++;
+
+        lastLoopTime = new Date().getTime();
+      }
+
+      setTimeout('loop();', 2);
+    }
+
+    function intersects(a, b){
+      return a.positionX < b.positionX + b.width && a.positionX + a.width > b.positionX
+       && a.positionY < b.positionY + b.height && a.positionY + a.height > b.positionY;
+    }
+
+
+    function ensureBounds(obj, ignoreY){
+      if(obj.positionX < 20){
+        obj.positionX = 20;
+      }
+
+      if(obj.positionY < 20 && !ignoreY){
+        obj.positionY = 20;
+      }
+
+      if(obj.positionX + obj.width > 480){
+        obj.positionX = 480 - obj.width;
+      }
+
+      if(obj.positionY + obj.height > 480 && !ignoreY){
+        obj.positionY = 480 - obj.height;
+      }
+    }
+
+    document.onkeydown = function(event){
+      toggleKey(event.keyCode, true);
+    }
+
+    document.onkeyup = function(event){
+      toggleKey(event.keyCode, false);
+    }
+
+    setPosition(player);
+    loop();
+
+  </script>
+
+</body>
+</html>

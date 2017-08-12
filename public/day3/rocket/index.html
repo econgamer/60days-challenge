@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
+</head>
+
+<body background="background.jpg">
+  <div id="background"></div>
+  <div id="player"><img src="player.png"  height="50" width="29"/></div>
+  <div id="rocket"><img src="rocket.png" height="300" width="75"/></div>
+
+  <script>
+    var counter = 0;
+    var lastLoopTime = 0;
+    var rocketTime = new Date().getTime();
+    var rocketStart = false;
+    const LEFT_KEY = 65;
+    const RIGHT_KEY = 68;
+
+    var sound1 = new Howl({
+      src: ['Countdown-timer.mp3']
+    });
+
+    var sound2 = new Howl({
+      src: ['Rocket-sound-effect.mp3']
+    });
+
+    sound1.play();
+
+    sound1.on('end', function(){
+      sound2.play();
+    });
+
+    setTimeout('sound2.stop();', 26000);
+
+
+
+    function createObj(name,x,y,w,h){
+      var result = {name,x,y,w,h};
+      return result;
+    }
+
+    function intersects(a, b){
+      return a.x < b.x + b.w && a.x + a.w > b.x &&
+      a.y < b.y + b.h && a.y + a.h > b.y;
+
+    }
+
+    function checkCollisions(){
+      if(intersects(player, rocket)){
+          gameOver();
+          rocketStart = true;
+        }
+
+      if(rocketStart){
+        rocket.y--;
+      }
+    }
+
+    function gameOver(){
+      var element = document.getElementById(player.name);
+      controller.left = false;
+      controller.right = false;
+      element.style.visibility = 'hidden';
+
+      // element = document.getElementById('gameOver');
+      // element.style.visibility = 'visible';
+    }
+
+
+    function update(){
+      positionSetting(player);
+      positionSetting(rocket);
+      handleController();
+      checkCollisions();
+    }
+
+    function positionSetting(obj){
+      var object = document.getElementById(obj.name);
+      object.style.left = obj.x + 'px';
+      object.style.top = obj.y + 'px';
+      object.style.width = obj.w + 'px';
+      object.style.height = obj.h + 'px';
+    }
+
+
+
+    function loop(){
+      if(new Date().getTime() -  lastLoopTime> 10){
+        // counter++;
+        // console.log(counter);
+        update();
+
+        if(new Date().getTime() - rocketTime > 13000){
+          rocket.y --;
+        }
+
+        lastLoopTime = new Date().getTime();
+      }
+
+
+
+      setTimeout('loop();', 2);
+    }
+
+    function toggleKey(keyCode, isPressed){
+      if(keyCode === LEFT_KEY){
+        controller.left = isPressed;
+      }
+
+      if(keyCode === RIGHT_KEY){
+        controller.right = isPressed;
+      }
+    }
+
+    function handleController(){
+      if(controller.left){
+        player.x -= 1.5;
+      }
+      if(controller.right){
+        player.x += 1.5;
+      }
+
+    }
+
+    var player = createObj('player',150,700,30,30);
+    var rocket = createObj('rocket',1200,700 - 300 +75,10,300);
+    var controller = {};
+    console.log(player);
+    positionSetting(player);
+    positionSetting(rocket);
+    loop();
+
+
+    document.onkeydown = function(evt){
+      return toggleKey(evt.keyCode, true);
+    }
+
+    document.onkeyup = function(evt){
+      return toggleKey(evt.keyCode, false);
+    }
+
+  </script>
+
+</body>
+</html>

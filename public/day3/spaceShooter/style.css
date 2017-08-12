@@ -1,0 +1,47 @@
+#player{
+  background: #0045ff;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+
+#background{
+  background: black;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#laser{
+  background: #00ff00;
+  width: 2px;
+  height: 50px;
+  position: absolute;
+}
+
+#score{
+  color: white;
+  font-size: 8px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+#gameOver{
+  color: white;
+  font-size: 50px;
+  position:absolute;
+  left: 140px;
+  top: 150px;
+  visibility: hidden;
+}
+
+.enemy{
+  background: red;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -50px;
+}
