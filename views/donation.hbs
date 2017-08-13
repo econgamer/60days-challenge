@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Donation Box</title>
+  </head>
+  <body>
+    <h1>Thanks for the donation!</h1>
+    <h1>You might donate again</h1>
+    <form method="POST" action="">
+      <label for="donationAmount">Donation Amount</label>
+      <input type="text" name="donationAmount" placeholder="$"/>
+      <label for="name"></label>
+      <input type="text" name="name" placeholder="Enter your name" />
+      <input type="submit" value="Donate" />
+    </form>
+
+
+
+      <h2>Highest Donation:</h2>
+      <p>Name: {{name}} , Amount: ${{amount}}</p>
+
+      <h2>Recent Donation:</h2>
+      <p>Name: {{rname}} , Amount: ${{ramount}}</p>
+
+
+  </body>
+</html>

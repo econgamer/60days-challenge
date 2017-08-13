@@ -9,6 +9,7 @@
   <div id="background"></div>
   <div id="player"><img src="player.png"  height="50" width="29"/></div>
   <div id="rocket"><img src="rocket.png" height="300" width="75"/></div>
+  <div id="gameOver"><h1>Fuck!</h1></div>
 
   <script>
     var counter = 0;
@@ -34,7 +35,12 @@
 
     setTimeout('sound2.stop();', 26000);
 
+    setTimeout('surprise();', 35000);
 
+    function surprise(){
+      element = document.getElementById('gameOver');
+      element.style.visibility = 'visible';
+    }
 
     function createObj(name,x,y,w,h){
       var result = {name,x,y,w,h};
