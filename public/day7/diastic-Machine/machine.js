@@ -49,9 +49,12 @@ function newText(){
 
 
           // console.log('inputText = ' + inputText[i][x]);
-          // console.log('checkedWords' + checkedWords);
-          // console.log('checkedNum' + checkedNum);
+          console.log('checkedWords' + checkedWords);
+          console.log('checkedNum' + checkedNum);
           // console.log('seedText = ' + seedText[checkedWords][checkedNum]);
+          if(seedText.length === checkedWords){
+            break;
+          }
 
 
           if(x == checkedNum && seedText[checkedWords][checkedNum] == inputText[i][x]){
@@ -61,6 +64,8 @@ function newText(){
                 checkedWords += 1;
                 checkedNum = 0;
               }
+
+
 
               displayValue.push(inputText[i]);
 
@@ -72,6 +77,7 @@ function newText(){
             }
 
 
+
         }
       }
 
@@ -79,6 +85,7 @@ function newText(){
 
     }
   }
+
   displayValue = displayValue.join(" ");
   output.html(displayValue);
   displayValue = [];
