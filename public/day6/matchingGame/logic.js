@@ -21,7 +21,7 @@ $(document).ready(function(){
       space.push(Math.floor((Math.random() * 3)));
       $('#row' + i).prepend(`<button class="btn btn-primary tic selectButton" id="${i * column + x}" value="${space[i * column + x]}">
       <span id="${i * column + x}">${space[i * column + x]}</span></button>`);
-      setTimeout(function(){$("span").text("X");}, 4000);
+      setTimeout(function(){$("span").text("X");}, 500);
     }
   }
   $('#score').html('');
