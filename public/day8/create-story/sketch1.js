@@ -26,7 +26,7 @@ function newText(){
 
   var inputValue = input.value();
   console.log(inputValue)
-  var text = inputValue.split(/(\W+)/);
+  var text = inputValue.split(/\W+/);
   console.log(text);
 
   for(var i = 0; i < text.length; i++){
@@ -40,7 +40,10 @@ function newText(){
     //   textSpan.html('<img src="stone.png"></img>');
     // }
 
-    if(/w+/){
+    if(/a-zA-Z/){
+
+      arraylist.push(textSpan.html());
+      console.log(arraylist);
 
       textSpan.mouseOver(hover);
       textSpan.pressed = false;
