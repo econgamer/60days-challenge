@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Favourite Url</title>
+    <link rel="stylesheet" type="text/css" href="urlStyle.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Enter your favourite web site and share to the world</h1>
+
+    <form method="POST" action="">
+      <label for="link">Url:</label>
+      <input type="text" name="link" placeholder="Link you wanna share"/>
+      <label for="desc">Description:</label>
+      <input type="text" name="desc" placeholder="What's it about?"/>
+      <input type="submit" value="Share" />
+    </form>
+
+
+        {{#each name}}
+            <div class="row" id={{this.description}}><p>{{this.description}}</p></div>
+            <div class="row" id={{this.name}}><a href={{this.name}}>{{this.name}}</a></div>
+
+            <button onclick="copyToClipboard('{{this.name}}')">Copy</button>
+            <br />
+        {{/each}}
+
+
+
+
+
+
+  </body>
+
+
+  <script>
+  function copyToClipboard(element) {
+      // var $temp = $("<input>");
+      // $("body").append($temp);
+      // $temp.val($(element).text()).select();
+      // $temp.val($(element).text()).select();
+      // document.execCommand("copy");
+      // $temp.remove();
+      // $temp.select();
+      // document.execCommand("copy");
+
+
+      var aux = document.createElement("input");
+       aux.setAttribute("value", element);
+       document.body.appendChild(aux);
+       aux.select();
+       document.execCommand("copy");
+
+       document.body.removeChild(aux);
+
+
+
+      console.log(element);
+    }
+  </script>
+</html>

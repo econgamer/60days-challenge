@@ -58,13 +58,46 @@ app.post('/donate', function(req, res){
   //    {name: docs,
   //     amount: docs});
   // });
+});
 
+
+
+// Day 18 - Image Gallery
+const Url = require('./public/day18/favouriteUrl/url');
+
+app.get('/favouriteUrl', (req, res) => {
+    Url.find({}).exec(function(err, data){
+      res.render('favUrl.hbs', {
+        name: data
+      });
+    });
+  }, (err) => {
+    res.render('maintenance.hbs');
 
 });
 
-// app.get('/day4/donationBox/2', function(req, res){
-//   res.render('donation.hbs', {});
-// });
+
+
+
+app.post('/favouriteUrl', (req, res) => {
+  const linkShared = new Url({ name: req.body.link, description: req.body.desc});
+  linkShared.save().then(() => {
+      Url.find({}).exec(function(err, data){
+        res.render('favUrl.hbs', {
+          name: data
+        });
+      });
+    }, (err) => {
+      res.render('maintenance.hbs');
+    });
+});
+
+
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);

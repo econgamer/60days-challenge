@@ -1,0 +1,23 @@
+body {
+              background-color:#999999;
+              font-family: 'Oswald', sans-serif;
+      }
+p
+{
+  color:#000000;
+  font-size:16px;
+}
+
+
+
+button
+{
+  width:100px;
+  border-radius:8px;
+
+  font-size:15px;
+  font-family: 'Oswald', sans-serif;
+  height:32px;
+  cursor:pointer;
+  background-color:#0077BE;
+}
