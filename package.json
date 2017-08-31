@@ -16,6 +16,18 @@
     "hbs": "^4.0.1",
     "mongoose": "^4.11.6",
     "mongoose-validators": "^0.1.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "bcryptjs": "*",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongodb": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*"
+
   }
 }

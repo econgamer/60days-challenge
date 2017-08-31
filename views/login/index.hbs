@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./animate.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>Login System</title>
+  </head>
+  <body>
+
+
+
+    {{#if user}}
+
+    <section class="intro3">
+
+
+
+      <div class="inner1">
+        <h1>Congration! You have become   <span id="superWord">{{user.name}}batman</span>  </h1>
+        <div class="content1">
+
+
+          <img id="batman" src="./batman-pic.jpg" height="400" width="320" />
+          <a href="./users/logout">Logout</a>
+
+        </div>
+
+
+      </div>
+    </section>
+
+    {{else}}
+
+      <h1>Index for login system successfully render</h1>
+      <a href="./users/register">Register</a>
+      <a href="./users/login">Login</a>
+
+    {{/if}}
+
+
+
+  </body>
+
+</html>

@@ -1,3 +1,17 @@
+//Login System
+
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var expressValidator = require('express-validator');
+var flash = require('connect-flash');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+// var mongo = require('mongodb');
+
+
+// end of login system
+
 const express = require('express');
 const hbs = require('hbs');
 
@@ -49,16 +63,11 @@ app.post('/donate', function(req, res){
   }, (err) => {
     res.render('maintenance.hbs');
   });
-  // res.send('Data received' + JSON.stringify(req.body));
 
-
-  // User.find({}, function (err, docs) {
-  //   console.log(docs);
-  //   res.render('donation.hbs',
-  //    {name: docs,
-  //     amount: docs});
-  // });
 });
+
+// End of Day 4
+
 
 
 
@@ -78,7 +87,6 @@ app.get('/favouriteUrl', (req, res) => {
 
 
 
-
 app.post('/favouriteUrl', (req, res) => {
   const linkShared = new Url({ name: req.body.link, description: req.body.desc});
   linkShared.save().then(() => {
@@ -92,12 +100,70 @@ app.post('/favouriteUrl', (req, res) => {
     });
 });
 
+// End of day 18
 
 
+// day 22 - login system
+
+var routes = require('./public/day22/loginSystem/index.js');
+var users = require('./public/day22/loginSystem/users.js');
 
 
+// app.use(bodyParser.json());
+app.use(cookieParser());  //some said it is insecure
+
+// for security
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}));
 
 
+// for express handling form validationErrors
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value){
+    var namespace = param.split('.'),
+        root      = namespace.shift(),
+        formParam = root;
+
+    while(namespace.length){
+      formParam += '[' + namespace.shift() + ']';
+    }
+
+    return{
+      param: formParam,
+      msg  : msg,
+      value: value
+    };
+  }
+}));
+
+
+//passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+// The flash is a special area of the session used for storing messages.
+// Messages are written to the flash and cleared after being displayed to the user.
+// The flash is typically used in combination with redirects,
+// ensuring that the message is available to the next page that is to be rendered.
+app.use(flash());
+
+//set up global variables
+app.use(function (req, res, next){
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
+
+app.use('/day22/loginSystem', routes);
+app.use('/day22/loginSystem/users', users);
+
+
+//end of login system
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
