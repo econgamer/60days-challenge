@@ -92,7 +92,7 @@
               success: function(data){
 
                 $('#output').html(`<p style="">${data.main.temp} °C - ${data.weather[0].description}</p>`);
-
+                getNews();
               },
               error: function(e){
 
@@ -100,34 +100,39 @@
             });
 
 
-
-
-            var urlabc = `https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=f9f5972195a1464c9c3d30bf0ec48183`;
-
-            $.ajax({
-              type:"GET",
-              url:urlabc,
-              async:true,
-              dataType:"json",
-              success: function(data){
-
-                console.log(data);
-
-                $('#news').html('');
-                for(var i = 0; i < data.articles.length; i++){
-                  $('#news').append(`<li><a href="${data.articles[i].url}">${data.articles[i].title}</a></li><br>`)
-                }
-
-                $('#news').append(`<p style="font-size: 12px;">source: bbc, newsApi</p>`)
-
-
-              },
-              error: function(e){
-
-              }
-            });
 
         }
+
+
+        function getNews(){
+          var urlabc = `https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=f9f5972195a1464c9c3d30bf0ec48183`;
+
+          $.ajax({
+            type:"GET",
+            url:urlabc,
+            async:true,
+            dataType:"json",
+            success: function(data){
+
+              console.log(data);
+
+              $('#news').html('');
+              for(var i = 0; i < data.articles.length; i++){
+                $('#news').append(`<li><a href="${data.articles[i].url}">${data.articles[i].title}</a></li><br>`)
+              }
+
+              $('#news').append(`<p style="font-size: 12px;">source: bbc, newsApi</p>`)
+
+
+            },
+            error: function(e){
+
+            }
+          });
+        }
+
+
+
 
 
         });
