@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <meta charset="utf-8" />
+    <title>Wikipedia - API</title>
+  </head>
+    <body>
+      <div id="showcase">
+
+
+
+        <div class="time" id="time"></div>
+
+        <div class="weather" id="output"></div>
+
+        <div id="news"></div>
+
+      </div>
+
+    </body>
+
+      <script>
+
+
+
+        $(document).ready(function() {
+          getTime();
+
+          function getTime(){
+            var currentdate = new Date();
+
+            currentHours = currentdate.getHours();
+            currentHours = ("0" + currentHours).slice(-2);
+
+            currentMinutes = currentdate.getMinutes();
+            currentMinutes = ("0" + currentMinutes).slice(-2);
+
+            currentSeconds = currentdate.getSeconds();
+            currentSeconds = ("0" + currentSeconds).slice(-2);
+
+
+            var datetime = currentdate.getDate() + "/"
+                    + (currentdate.getMonth()+1)  + "/"
+                    + currentdate.getFullYear() + " @ "
+                    + currentHours + ":"
+                    + currentMinutes + ":"
+                    + currentSeconds;
+
+            $('#time').html(datetime);
+
+          }
+
+
+          setInterval(getTime, 1000);
+
+          var lat;
+          var lon;
+
+          getLocation();
+
+
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+
+            } else {
+                alert('error');
+            }
+
+        }
+        function showPosition(position) {
+
+
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+
+            var url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=fe856fd98f573e46b87f2f7f1ac27a06&units=metric`;
+
+            $.ajax({
+              type:"GET",
+              url:url,
+              async:true,
+              dataType:"json",
+              success: function(data){
+
+                $('#output').html(`<p style="">${data.main.temp} °C - ${data.weather[0].description}</p>`);
+
+              },
+              error: function(e){
+                alert("Error");
+              }
+            });
+
+
+
+
+            var urlabc = `https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=f9f5972195a1464c9c3d30bf0ec48183`;
+
+            $.ajax({
+              type:"GET",
+              url:urlabc,
+              async:true,
+              dataType:"json",
+              success: function(data){
+
+                console.log(data);
+
+                $('#news').html('');
+                for(var i = 0; i < data.articles.length; i++){
+                  $('#news').append(`<li><a href="${data.articles[i].url}">${data.articles[i].title}</a></li><br>`)
+                }
+
+                $('#news').append(`<p style="font-size: 12px;">source: bbc, newsApi</p>`)
+
+
+              },
+              error: function(e){
+                alert("Error");
+              }
+            });
+
+        }
+
+
+        });
+      </script>
+
+
+
+
+
+</html>
