@@ -14,7 +14,7 @@
 
 #showcase{
   z-index: 1000;
-  
+  background: url('background.jpeg');
 
 
   background-size:cover;

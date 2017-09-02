@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Favourite Url</title>
+    <link rel="stylesheet" type="text/css" href="css/contact.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <div class="intro">
+      <div class="header">
+        <h1>My Contact</h1>
+        <form method="POST" action="">
+          <label for="Name"><strong>Name: </strong></label>
+          <input type="text" name="name" placeholder=""/>
+          <label for="desc"><strong>Description:</strong></label>
+          <input type="text" name="desc" placeholder=""/>
+          <input type="submit" value="Add" />
+        </form>
+      </div>
+    </div>
+
+
+
+    <div class="intro2">
+      <div class="mainContent">
+        <input type="text" id="searchInput" placeholder="search for your friend"/>
+
+        <div id="nameList">
+          {{#each name}}
+              <div class="row" id="name"><p>{{this.name}}</p> <span> - {{this.description}}</span></div><br />
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  </body>
+
+
+  <script>
+
+  var searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('keyup', filterNames);
+
+    function filterNames(){
+
+
+      var filterValue = document.getElementById('searchInput').value;
+
+      var list = document.getElementById('nameList');
+      var listItem = list.querySelectorAll('#name');
+
+
+      // var list = document.getElementById('nameList');
+      // var listItem = list.querySelectorAll('#name');
+
+
+
+
+      for(var i = 0; i < listItem.length; i++){
+        var listItemDetail = listItem[i].querySelectorAll('p');
+
+
+
+        if(listItemDetail[0].textContent.indexOf(filterValue) != -1){
+
+          console.log(listItemDetail[0].textContent.indexOf(filterValue));
+          console.log("Find you bitch!");
+
+          listItem[i].style.display = '';
+        }else{
+          listItem[i].style.display = 'none';
+        }
+      }
+
+
+    }
+
+
+
+  </script>
+</html>

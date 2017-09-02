@@ -71,7 +71,7 @@ app.post('/donate', function(req, res){
 
 
 
-// Day 18 - Image Gallery
+// Day 18 - Url Gallery
 const Url = require('./public/day18/favouriteUrl/url');
 
 app.get('/favouriteUrl', (req, res) => {
@@ -101,6 +101,42 @@ app.post('/favouriteUrl', (req, res) => {
 });
 
 // End of day 18
+
+
+// Day 23 - My contact
+const Contact = require('./public/day24/myContact/contact');
+
+app.get('/myContact', (req, res) => {
+    Contact.find({}).exec(function(err, data){
+      res.render('contact.hbs', {
+        name: data
+      });
+    });
+  }, (err) => {
+    res.render('maintenance.hbs');
+
+});
+
+
+
+app.post('/myContact', (req, res) => {
+  const contactPerson = new Contact({ name: req.body.name, description: req.body.desc});
+  contactPerson.save().then(() => {
+      Contact.find({}).exec(function(err, data){
+        res.render('contact.hbs', {
+          name: data
+        });
+      });
+    }, (err) => {
+      res.render('maintenance.hbs');
+    });
+});
+
+// End of day 23
+
+
+
+
 
 
 // day 22 - login system
@@ -164,6 +200,11 @@ app.use('/day22/loginSystem/users', users);
 
 
 //end of login system
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
