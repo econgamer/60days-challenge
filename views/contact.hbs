@@ -26,7 +26,7 @@
 
     <div class="intro2">
       <div class="mainContent">
-        <input type="text" id="searchInput" placeholder="search for your friend"/>
+        <input type="text" id="searchInput" placeholder="Find My Friends"/>
 
         <div id="nameList">
           {{#each name}}
@@ -69,7 +69,7 @@
 
 
 
-        if(listItemDetail[0].textContent.indexOf(filterValue) != -1){
+        if(listItemDetail[0].textContent.toUpperCase().indexOf(filterValue.toUpperCase()) != -1){
 
           console.log(listItemDetail[0].textContent.indexOf(filterValue));
           console.log("Find you bitch!");
