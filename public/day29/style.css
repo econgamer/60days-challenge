@@ -1,6 +1,6 @@
 @font-face {
     font-family: "LODRFont";
-    src: url(RINGM.ttf) format("truetype");
+    src: url('RINGM.TTF') format("truetype");
 }
 /*p.customfont {
     font-family: "LODRFont", Verdana, Tahoma;
