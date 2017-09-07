@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title></title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <!-- <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+    <script language="javascript" src="libraries/p5.dom.js"></script>
+    <script language="javascript" src="libraries/p5.sound.js"></script> -->
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.js"></script>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+  </head>
+  <body>
+    <title> Our WebGL Skeleton Framework</title>
+
+    <canvas id="webGL-container">
+    </canvas>
+
+
+
+    <div id="text"><p>Lord Of The Rings - fan made website</p></div>
+
+
+    <div id="bottom">
+      <div id="inner">
+        <div id="credit">
+            2017, Lord Of The Rings - fan made website With ♥ by michael.
+            All copyrights reserved to their respective owners.
+        </div>
+      </div>
+    </div>
+
+    <div id="bottom">
+      <div id="inner">
+        <div id="detail">
+          <div class="content">
+            <span id="a"><a href="https://www.amazon.ca/Fellowship-Ring-J-R-Tolkien/dp/0261102354/ref=pd_bxgy_14_img_3?_encoding=UTF8&psc=1&refRID=4M636WC5C034REA21JWW">The Fellowship Of The Ring</a></span>
+            <span id="b"><a href="https://www.amazon.ca/Two-Towers-J-R-Tolkien/dp/0261102362/ref=sr_1_1?s=books&ie=UTF8&qid=1504776026&sr=1-1&keywords=The+Two+Tower">The Two Tower</a></span>
+            <span id="c"><a href="https://www.amazon.ca/Return-King-J-R-Tolkien/dp/0261102370">The Return of the King</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <audio preload="auto" autobuffer id="player">
+    <source src="lord.mp3" />
+  </audio>
+
+  </body>
+
+  <script language="javascript" type="text/javascript" src="app_ring2.js"></script>
+  <script>
+    var music = document.getElementById('player');
+    music.pause();  //just bind play/pause to some onclick events on your page
+    music.play();
+  </script>
+  <!-- <script language="javascript" type="text/javascript" src="app.js"></script> -->
+</html>

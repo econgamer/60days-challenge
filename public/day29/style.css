@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "LODRFont";
+    src: url(RINGM.ttf) format("truetype");
+}
+/*p.customfont {
+    font-family: "LODRFont", Verdana, Tahoma;
+}*/
+
+
+
+body{
+  margin: 0;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+
+#text {
+    margin: 0;
+    font-size: 60px;
+    position: absolute;
+    padding-top: 10px;
+    top: 0px;
+    left: 30px;
+    z-index: 3;
+    color: #ffffff;
+    font-family: "LODRFont", Verdana, Tahoma;
+}
+
+
+#text p{
+  margin: 0;
+}
+
+
+
+#bottom{
+  margin: 0;
+  font-size: 70px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  color: #ffffff;
+  font-family: "LODRFont", Verdana, Tahoma;
+}
+
+
+/*.intro{
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  background-image: url('batman.jpg');
+  display:table;
+  top: 0;
+  background-size: cover;
+  background-position:center;
+}*/
+
+
+
+#bottom #inner{
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  display:table;
+  top: 0;
+  background-size: cover;
+  background-position:center;
+}
+
+#credit{
+  display: table-cell;
+  vertical-align: bottom;
+  width: 100%;
+  max-width: none;
+  font-family: "Times New Roman", Georgia, Serif;
+  font-size: 16px;
+}
+
+#detail{
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  max-width: none;
+  font-family: "Times New Roman", Georgia, Serif;
+  font-size: 22px;
+}
+
+.content a{
+  text-decoration: none;
+  color: #ffffff;
+  margin-right: 4%;
+}
+
+.content #a a:hover {
+    margin-right: 4%;
+    border-bottom: 4.5px solid #EDD209;
+}
+
+.content #b a:hover {
+    margin-right: 4%;
+    border-bottom: 4.5px solid #D3251C;
+}
+
+.content #c a:hover {
+    margin-right: 4%;
+    border-bottom: 4.5px solid #62A950;
+}
+
+/*#D3251C*/
+/*#62A950*/
+
+.content{
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  padding-top: 20%;
+}
+
+
+
+#webGL-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
