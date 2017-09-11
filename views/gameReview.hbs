@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Game Review</title>
+    <link rel="stylesheet" type="text/css" href="css/gameReview.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="intro">
+      <div class="header">
+
+          <h1>Game Review</h1>
+          <h3>GTA V</h3>
+          <p>Release Date: 14 Apr, 2015</p>
+      </div>
+    </div>
+
+
+    <div class="intro4">
+      <div class="content" id="content">
+        <form class="reviewForm" method="POST" action="">
+          <label for="Name"><strong>Name: </strong></label>
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          <input type="text" name="name" placeholder=""/>
+          <br />
+
+          <label for="token"><strong>Token: </strong></label>
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          <input type="text" name="token" placeholder=""/>
+          <br />
+
+          <textarea type="text" name="desc" placeholder=""></textarea>
+          <br />
+
+
+          <button name="yes" class="mainButton" id="yes" onclick="changeYesValue();" value="yes"><i class="ion-thumbsup"></i>Yes</button>
+
+          <button name="no" class="mainButton" id="no" onclick="changeNoValue();" value="no"><i class="ion-thumbsdown"></i>No</button>
+
+          <input type="text" id="store" name="store" />
+
+          <input id="submit" type="submit" value="Post review" />
+        </form>
+      </div>
+    </div>
+
+
+
+
+          <div class="intro2">
+            <div class="mainContent" id="mainContent">
+
+              {{#each name}}
+
+              <div class="row" id="recommendation"><p>{{this.recommendation}}</p><br /></div>
+
+              <div class="row" id="name">{{this.description}} <span id="author"> by {{this.name}}</span></div><br />
+
+              <form method="POST" action="gameReviewdelete">
+                <input type="text" id="token" name="token" placeholder="Please enter the post token" value=""/>
+                <input type="text" id="store" name="id" value="{{this._id}}"/>
+                <input type="submit" id="delete" value="delete" />
+              </form>
+
+              {{/each}}
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+  </body>
+
+
+  <script>
+
+    $('#yes').click(function(e){
+      e.preventDefault(); // prevents default
+      //return false; // also prvents default (i like to add both but just the e.preventDefault is required :) )
+    });
+
+    $('#no').click(function(e){
+      e.preventDefault(); // prevents default
+      //return false; // also prvents default (i like to add both but just the e.preventDefault is required :) )
+    });
+
+    var $yes = document.getElementById("yes");
+    var $no = document.getElementById("no");
+    var $store = document.getElementById("store");
+    var list = document.getElementById('mainContent');
+    var recommendations = list.querySelectorAll('#recommendation');
+    console.log(recommendations);
+
+    for(var i = 0; i < recommendations.length; i++){
+      if(recommendations[i].textContent == 'yes'){
+        recommendations[i].innerHTML = '<i class="ion-thumbsup"></i>';
+      }else if(recommendations[i].textContent == 'no'){
+        recommendations[i].innerHTML = '<i class="ion-thumbsdown"></i>';
+      }
+
+    }
+
+
+    function changeYesValue()
+    {
+        // Changes the value of the button
+        $store.value = 'yes';
+        $yes.value = 'selected';
+        $no.value = 'no';
+
+        // Changes the text on the button
+        $yes.innerHTML = '<i class="ion-checkmark-round"></i>Yes';
+        $no.innerHTML = '<i class="ion-thumbsdown"></i>No';
+
+    }
+
+    function changeNoValue()
+    {
+        // Changes the value of the button
+        $store.value = 'no';
+        $no.value = 'selected';
+        $yes.value = 'yes';
+
+        // Changes the text on the button
+        $no.innerHTML = '<i class="ion-checkmark-round"></i>No';
+        $yes.innerHTML = '<i class="ion-thumbsup"></i>Yes';
+
+        // document.form.button.innerHTML = new Date();
+    }
+
+
+  </script>
+</html>

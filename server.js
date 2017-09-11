@@ -203,6 +203,57 @@ app.use('/day22/loginSystem/users', users);
 
 
 
+// Day 33 - review system
+const gameReview = require('./public/day33/gameReview');
+
+app.get('/gameReview', (req, res) => {
+    gameReview.find({}).exec(function(err, data){
+      res.render('gameReview.hbs', {
+        name: data
+      });
+    });
+  }, (err) => {
+    res.render('maintenance.hbs');
+});
+
+
+// Create new Review
+app.post('/gameReview', (req, res) => {
+  console.log(req.body);
+  const newReview = new gameReview({ name: req.body.name, description: req.body.desc, recommendation: req.body.store, token: req.body.token});
+  newReview.save().then(() => {
+      gameReview.find({}).exec(function(err, data){
+        res.render('gameReview.hbs', {
+          name: data
+        });
+      });
+    }, (err) => {
+      res.render('maintenance.hbs');
+    });
+});
+
+// Update existing review
+app.post('/gameReviewdelete', (req, res) => {
+  gameReview.findOneAndRemove({ token: req.body.token, _id: req.body.id})
+  .then(() => {
+      res.redirect('/gameReview');
+      // gameReview.find({}).exec(function(err, data){
+      //   res.render('gameReview.hbs', {
+      //     name: data
+      //   });
+      // });
+    }, (err) => {
+      res.render('maintenance.hbs');
+    });
+
+});
+
+// End of review system
+
+
+
+
+
 
 
 

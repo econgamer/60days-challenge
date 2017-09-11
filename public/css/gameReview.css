@@ -1,0 +1,235 @@
+html, body{
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  /*background: #E9EBEE;*/
+  background: #E9EBEE;
+  color: #000000;
+}
+
+
+#store{
+  border: none;
+  width: 0px;
+}
+
+.mainButton{
+  font-family: 'Pacifico', cursive;
+  background-color: Transparent;
+  font-size:16px;
+  text-decoration:none;
+  color:#000000;
+  border:#000000 1px solid;
+  padding:8px 16px;
+  border-radius:10px;
+  margin-top:20px;
+}
+
+.mainButton:hover{
+  font-family: 'Pacifico', cursive;
+  background-color: #E03800;
+  font-size:16px;
+  text-decoration:none;
+  color:#000000;
+  border:#000000 1px solid;
+  padding:8px 16px;
+  border-radius:10px;
+  margin-top:20px;
+}
+
+#submit{
+  font-family: 'Pacifico', cursive;
+  background-color: #ff9977;
+  font-size:16px;
+  text-decoration:none;
+  color:#000000;
+  border:#000000 1px solid;
+  padding:8px 16px;
+  border-radius:3px;
+  margin-top:20px;
+}
+
+#delete{
+  font-family: 'Pacifico', cursive;
+  background-color: #ff9977;
+  font-size:8px;
+  text-decoration:none;
+  color:#000000;
+  border:#000000 1px solid;
+  padding:8px 16px;
+  border-radius: 50%;
+  margin-top:20px;
+}
+
+
+.intro{
+  height: 55%;
+  width: 100%;
+  margin: auto;
+  color: #ffffff;
+  background: linear-gradient(
+                     rgba(0,0,0, 0.25),
+                     rgba(0,0,0, 0.99)),
+                     url('img/gta.jpg');
+  background-size: cover;
+  font-family: 'Oswald', sans-serif;
+  background-attachment: fixed;
+  display:table;
+  top: 0;
+  background-size: cover;
+  background-position:center;
+  margin-bottom: 40px;
+}
+
+.intro .header{
+  display: table-cell;
+  text-align: center;
+  width: 100%;
+  max-width: none;
+}
+
+.intro .inner{
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  max-width: none;
+}
+
+.intro .header h1{
+  width: 10%;
+  margin: auto;
+  margin-top: 300px;
+  margin-bottom: 20px;
+  border-top: 10px solid #E03800;
+}
+
+textarea{
+  width: 500px;
+  height: 300px;
+}
+
+textarea:focus {
+    outline: none !important;
+    border:1px solid #E03800;
+    box-shadow: 0 0 1px #000000;
+}
+
+input:focus {
+    outline: none !important;
+    border:1px solid #E03800;
+    box-shadow: 0 0 1px #000000;
+}
+
+#author{
+  font-size: 16px;
+}
+
+.content{
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.content h1{
+  padding: 0;
+  margin: 0;
+}
+
+.btn{
+  margin-top: 4px;
+  font-family: 'Bangers', cursive;
+  color: #000000;
+  padding: 5px;
+  border: solid #000000;
+  background: none;
+}
+
+#i1{
+  margin-left: 3px;
+  padding: 3px;
+  background-color: #000000;
+  color: #ffffff;
+  outline: none;
+  border: none;
+}
+
+#i2{
+  background-color: #000000;
+  padding: 3px;
+  color: #ffffff;
+  outline: none;
+  border: none;
+}
+
+
+
+/*layout 2*/
+.intro2{
+  height: 84%;
+  width: 100%;
+  margin: auto;
+  background: #E9EBEE;
+  display:table;
+  top: 0;
+  background-size: cover;
+  background-position:center;
+}
+
+.intro2 .mainContent{
+  display: table-cell;
+  float:left;    /* Making br*/
+  text-align: center;
+  width: 100%;
+  max-width: none;
+}
+
+
+
+
+/*layout 3*/
+.intro3{
+  height: 84%;
+  width: 100%;
+  margin: auto;
+  background: #E9EBEE;
+  display:table;
+  top: 0;
+  background-size: cover;
+  background-position:center;
+}
+
+.intro3 .mainContent{
+  display: table-cell;
+  float:left;    /* Making br*/
+  text-align: center;
+  width: 100%;
+  max-width: none;
+}
+
+/*layout 4*/
+.intro4{
+  height: 44%;
+  width: 100%;
+  margin: auto;
+  background: #E9EBEE;
+  display:table;
+  top: 0;
+  background-size: cover;
+  background-position:center;
+}
+
+.intro4 .content{
+  display: table-cell;
+  float:left;    /* Making br*/
+  text-align: center;
+  width: 100%;
+  max-width: none;
+}
+
+.reviewForm{
+  font-family: 'Pacifico', cursive;
+}
