@@ -7,7 +7,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-    <meta charset="utf-8" />
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Relationship</title>
   </head>
     <body>
@@ -43,7 +44,7 @@
             $('#search').html('Loading......');
 
             // var url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${searchTerm}&format=json&callback=?`;
-            var url = `https://api.wordnik.com:80/v4/word.json/${searchTerm}/relatedWords?useCanonical=true&relationshipTypes=cross-reference&limitPerRelationshipType=50&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5`;
+            var url = `http://api.wordnik.com:80/v4/word.json/${searchTerm}/relatedWords?useCanonical=true&relationshipTypes=cross-reference&limitPerRelationshipType=50&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5`;
 
             setTimeout(function(){ searchLoop(count, pastWord); }, 1000);
             // searchLoop(count, pastWord);
@@ -59,7 +60,7 @@
               $.ajax({
                 type:"GET",
                 url:url,
-                async:false,
+                // async:false,
                 dataType:"json",
                 success: function(data){
 
