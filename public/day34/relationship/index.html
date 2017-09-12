@@ -46,7 +46,7 @@
             $('#search').html('Loading......');
 
             // var url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${searchTerm}&format=json&callback=?`;
-            var url = `http://api.wordnik.com:80/v4/word.json/${searchTerm}/relatedWords?useCanonical=true&relationshipTypes=cross-reference&limitPerRelationshipType=50&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5`;
+            var url = `http://api.wordnik.com:80/v4/word.json/${searchTerm}/relatedWords?useCanonical=true&relationshipTypes=cross-reference&limitPerRelationshipType=20&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5`;
 
             setTimeout(function(){ searchLoop(count, pastWord); }, 1000);
             // searchLoop(count, pastWord);
@@ -60,7 +60,7 @@
               $.ajax({
                 type:"GET",
                 url:url,
-                async:false,
+                async:true,
                 dataType:"json",
                 success: function(data){
 
@@ -73,14 +73,14 @@
                       searchTerm = data[0].words[i];
                       count++;
                       console.log('searchTerm: ' + searchTerm + 'count: ' + count + 'pastWord: ' + pastWord);
-                      if(count >= 2 & count <= 10){
+                      if(count >= 2 && count <= 10){
                         if(divTrigger == true){
                           $('#searchResult').append(`<div class="resultStyle col-sm-2" id = "${searchCount}"></div>`);
                           divTrigger = false;
                         }
 
 
-                        $(`#${searchCount}`).append(`<p id="${searchCount}"> ${pastWord} > ${data[0].words[i]} </p>`);
+                        $(`#${searchCount}`).append(`<p id="${searchCount}"> ${searchCount} : ${pastWord} > ${data[0].words[i]} </p>`);
                         resultList[`${searchCount}`] = data[0].words[i];
                         console.log(resultList);
 
@@ -90,7 +90,9 @@
                       }
 
 
-                      if(totalCount > 150){
+                      if(totalCount > 100){
+                        $('#101').html('');
+                        $("#101").removeClass("resultStyle");
                         console.log('break');
                         break;
                       }
@@ -99,8 +101,13 @@
                       searchLoop(count, pastWord);
                       searchCount ++;
                       count = 0;
-                      divTrigger = true;
+
+                      if(totalCount < 100){
+                        divTrigger = true;
+                      }
+
                       //console.log(data[i]);
+
                     }
 
 
