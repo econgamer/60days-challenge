@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <meta charset="utf-8" />
+    <title>Relationship</title>
+  </head>
+    <body>
+      <div class="main-div">
+        <h1>Relationship</h1>
+        <p>Discover the relationship between words</p>
+
+
+        <input type="text" id="searchTerm" placeholder="Enter keywords" />
+        <button id="search" type="button" class="btn">Search</button>
+        <p>Please refresh the page to search again.</p>
+
+        <div id="searchResult"></div>
+
+        <!-- <ul class="result" id="output"></ul> -->
+      </div>
+
+    </body>
+
+      <script>
+        $(document).ready(function() {
+
+          var count = 0;
+          var pastWord = '';
+          var totalCount = 0;
+          var searchCount = 1;
+          var searchRecord;
+          var resultList = [];
+          var divTrigger = true;
+
+          $('#search').click(function(){
+            var searchTerm = $('#searchTerm').val();
+            $('#search').html('Loading......');
+
+            // var url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${searchTerm}&format=json&callback=?`;
+            var url = `https://api.wordnik.com:80/v4/word.json/${searchTerm}/relatedWords?useCanonical=true&relationshipTypes=cross-reference&limitPerRelationshipType=50&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5`;
+
+            setTimeout(function(){ searchLoop(count, pastWord); }, 1000);
+            // searchLoop(count, pastWord);
+
+            function searchLoop(count, pastWord){
+
+
+
+              totalCount++;
+              console.log(totalCount);
+
+              var url = `http://api.wordnik.com:80/v4/word.json/${searchTerm}/relatedWords?useCanonical=true&relationshipTypes=cross-reference&limitPerRelationshipType=50&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5`;
+              $.ajax({
+                type:"GET",
+                url:url,
+                async:false,
+                dataType:"json",
+                success: function(data){
+
+                  if(data[0] != null){
+
+                    for(var i = 0; i < data[0].words.length; i++){
+
+
+
+                      searchTerm = data[0].words[i];
+                      count++;
+                      console.log('searchTerm: ' + searchTerm + 'count: ' + count + 'pastWord: ' + pastWord);
+                      if(count >= 2 & count <= 10){
+                        if(divTrigger == true){
+                          $('#searchResult').append(`<div class="resultStyle col-sm-2" id = "${searchCount}"></div>`);
+                          divTrigger = false;
+                        }
+
+
+                        $(`#${searchCount}`).append(`<p id="${searchCount}"> ${pastWord} > ${data[0].words[i]} </p>`);
+                        resultList[`${searchCount}`] = data[0].words[i];
+                        console.log(resultList);
+
+
+                      }else if(count > 10){
+                        break;
+                      }
+
+
+                      if(totalCount > 150){
+                        console.log('break');
+                        break;
+                      }
+
+                      pastWord = data[0].words[i];
+                      searchLoop(count, pastWord);
+                      searchCount ++;
+                      count = 0;
+                      divTrigger = true;
+                      //console.log(data[i]);
+                    }
+
+
+                  }
+
+
+                  $('#search').html('Search');
+
+
+                },
+                error: function(e){
+                  alert("Error");
+                }
+              });
+
+            }
+
+
+
+
+
+            // for( var i = 0; i < 150; i ++){
+            //   if($( `#${i}` )){
+            //
+            //     $("#searchResult").find(`#${i}`).each(function(){ $( `#${i}` ).wrap( "<div class='new'></div>" ); });
+            //
+            //     // $( `#${i}` ).wrap( "<div class='new'></div>" );
+            //     console.log('Parent assigned');
+            //   }
+
+            // }
+
+
+
+
+          });
+
+          //end of the search function
+
+
+
+
+
+          $('#searchTerm').keypress(function(key){
+            if(key.which === 13){
+              $('#search').click();
+            };
+          })
+
+
+
+
+
+
+          //   $.ajax({
+          //     type:"GET",
+          //     url:url,
+          //     async:false,
+          //     dataType:"json",
+          //     success: function(data){
+          //       $('#output').html('');
+          //       for(var i = 0; i < data[1].length; i++){
+          //         $('#output').prepend(`<li><a href="${data[3][i]}">${data[1][i]}</a>${data[2][i]}</li><br>`)
+          //       }
+          //
+          //       $('#searchTerm').val('');
+          //     },
+          //     error: function(e){
+          //       alert("Error");
+          //     }
+          //   });
+          //
+          // });
+
+
+
+        });
+      </script>
+
+
+
+
+
+</html>
