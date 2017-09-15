@@ -138,7 +138,6 @@ app.post('/myContact', (req, res) => {
 
 
 
-
 // day 22 - login system
 
 var routes = require('./public/day22/loginSystem/index.js');
@@ -252,7 +251,68 @@ app.post('/gameReviewdelete', (req, res) => {
 
 
 
+// Day 37
+const nodemailer = require('nodemailer');
 
+app.get('/happyFace', (req, res) => {
+    res.render('happyFace.hbs', {
+
+    });
+});
+
+
+app.post('/happyFace/send', (req, res) => {
+  const output = `
+    <h1>Someone sent you a happy face</h1>
+    <img src="https://www.w3schools.com/tags/smiley.gif" alt="Smiley face">
+  `;
+
+
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com', //smtp server
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+            user: 'michaelyeung93@gmail.com', // generated ethereal user
+            pass: '51461273'  // generated ethereal password
+        },
+        tls:{
+          rejectUnauthorized:false
+        }
+    });
+
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: '"Michael" <michaelyeung93@gmail.com>', // sender address
+        to: `${req.body.email}`, // list of receivers
+        subject: 'Happy Face', // Subject line
+        text: 'Someone send you a happy face', // plain text body
+        html: output // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);
+        // Preview only available when sending through an Ethereal account
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@blurdybloop.com>
+        // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+
+        res.render('happyFace.hbs', {msg: 'Happy face has been sent'});
+    });
+
+
+
+});
+
+
+// End of day 37
 
 
 
