@@ -261,7 +261,7 @@ app.get('/happyFace', (req, res) => {
 });
 
 
-app.post('/happyFace/send', (req, res) => {
+app.post('/happyFace', (req, res) => {
   const output = `
     <h1>Someone sent you a happy face</h1>
     <img src="https://www.w3schools.com/tags/smiley.gif" alt="Smiley face">
