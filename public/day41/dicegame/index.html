@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="style.css">
+
+        <title>Pig Game</title>
+    </head>
+
+    <body>
+        <div class="attackArea">
+          <p class="attackerRemaining">Remaining: </p>
+          <img src="img/dice-1.png" class="attackerFirstDice" />
+          <img src="img/dice-1.png" class="attackerSecondDice" />
+          <img src="img/dice-1.png" class="attackerThirdDice" />
+        </div>
+
+        <div class="defendArea">
+          <p class="defenderRemaining">Remaining: </p>
+          <img src="img/dice-1.png" class="defenderFirstDice" />
+          <img src="img/dice-1.png" class="defenderSecondDice" />
+        </div>
+
+        <div class="armyArea">
+          <label>Attacker:</label>
+          <br />
+          <input type="text" class="attackerArmy" name="attackerArmy" /><br />
+
+          <label>Defender</label>
+          <br />
+          <input type="text" class="defenderArmy" />
+        </div>
+
+        <button class="btn-force">Send the army</button>
+        <button class="btn-roll">Roll</button>
+        <div class="output">
+          <p class="firstWave"></p>
+          <p class="secondWave"></p>
+          <p class="result"></p>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
