@@ -138,6 +138,7 @@ function resultCalculate(maxDice, secondMaxDice, firstDefend, secondDefend){
   var firstWave =  document.querySelector('.firstWave');
   var secondWave =  document.querySelector('.secondWave');
   var result =  document.querySelector('.result');
+  result.textContent = '';
 
   if((attackerForce > 0) && (defenderForce > 0) && (maxDice != 0) && (firstDefend != 0)){
     if(maxDice > firstDefend){
