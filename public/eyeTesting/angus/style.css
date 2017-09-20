@@ -133,8 +133,11 @@ body {
 
   position: absolute;
   width: 200px;
-  left: 51%;
-  top: 20%;
+  height: 100%;
+  left: 50%;
+  top: 35%;
+  text-align: center;
+  transform: translateY(-50%);
   transform: translateX(-50%);
   color: #555;
   background: none;
