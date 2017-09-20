@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Polling App</title>
+    <link rel="stylesheet" type="text/css" href="css/polling.css">
+  </head>
+  <body>
+
+    <div class="topic">
+      <h1>     </h1>
+      <h1>You prefer heads or tails? </h1>
+    </div>
+
+
+
+    <form class="choice1" method="POST" action="">
+
+      <input type="text" id="vote" name="vote" value=1 placeholder="" />
+      <input class="submit" type="submit" value="Heads" />
+    </form>
+
+    <form class="choice2" method="POST" action="">
+
+      <input type="text" id="vote" name="vote" value=0 placeholder="" />
+      <input class="submit" type="submit" value="Tails" />
+    </form>
+
+
+    <div class="output">
+        <p>{{message}}</p>
+
+    </div>
+
+    {{#each result}}
+
+      <div class="result">{{this.vote}}</div>
+    {{/each}}
+
+
+
+  </body>
+
+  <script>
+    var resultList = 0;
+    var choice1;
+    var choice2;
+    var result = document.querySelectorAll('.result');
+
+    if(result.length > 0){
+      result = document.querySelectorAll('.result');
+      for(var i = 0; i < result.length; i ++){
+        resultList += parseInt(result[i].textContent);
+      }
+
+      if(resultList > 0){
+        choice1 = Math.floor((resultList / result.length) * 100);
+      }else{
+        choice1 = 0;
+      }
+
+      choice2 = 100 - choice1;
+    }
+
+
+    if(choice1 != null || choice2 != null){
+      var output = document.querySelector('.output');
+      output.innerHTML = `${choice1}% choice Heads </br> ${choice2}% choice Tails`
+    }
+
+
+
+  </script>
+
+</html>

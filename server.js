@@ -311,8 +311,87 @@ app.post('/happyFace', (req, res) => {
 
 });
 
-
 // End of day 37
+
+
+// day 42
+
+app.use(session({
+    cookieName: 'session',
+    secret: "hello",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+
+}));
+
+
+
+const poll = require('./public/day42/poll');
+
+app.get('/poll', (req, res) => {
+    console.log('Session before: ' + req.session.user);
+
+
+      res.render('pollingapp.hbs', {
+
+      });
+
+
+});
+
+
+// Create new Review
+app.post('/poll', (req, res) => {
+  console.log(req.body);
+
+
+  if(req.session.user === undefined){
+    const newpoll = new poll({ vote: req.body.vote});
+    newpoll.save().then(() => {
+
+        // session an cookie handling
+        req.session.user = newpoll;
+        req.session.cookie.expires = new Date(Date.now() + 2 * 60 * 1000);
+
+        //
+
+        console.log('Session after vote: ' + req.session.user);
+
+        poll.find({}).exec(function(err, data){
+          console.log('Data pass to font ' , data);
+          res.render('pollingapp.hbs', {
+            result: data
+          });
+        });
+      }, (err) => {
+        res.render('maintenance.hbs');
+      });
+  }else{
+    res.render('pollingapp.hbs', {
+      message: 'You have just voted'
+    });
+  }
+
+
+});
+
+
+
+
+
+// end of day 42
+
+
+
+
+
+
+
+
+
+
+
 
 
 
