@@ -1,0 +1,205 @@
+/**********************************************
+*** GENERAL
+**********************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    /*background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(back.jpg);*/
+    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4));
+    background-size: cover;
+    background-position: center;
+    font-family: 'Anton', sans-serif;
+    position: relative;
+    height: 100vh;
+    color: #555;
+}
+
+
+
+/*attcker style*/
+.attackArea p{
+  position: absolute;
+  width: 200px;
+  left: 30%;
+  transform: translateX(-50%);
+  color: #555;
+  background: none;
+  border: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 300;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.attackArea img{
+  position: absolute;
+  width: 200px;
+  left: 30%;
+  transform: translateX(-50%);
+  color: #555;
+  background: none;
+  border: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 300;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.attackerFirstDice{
+  top: 10%;
+}
+
+.attackerSecondDice{
+  top: 40%;
+}
+
+.attackerThirdDice{
+  top: 70%;
+}
+
+/*end of attacker*/
+
+
+/*defender Area*/
+
+.defendArea p{
+  position: absolute;
+  width: 200px;
+  left: 70%;
+  transform: translateX(-50%);
+  color: #555;
+  background: none;
+  border: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 300;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.defendArea img{
+  position: absolute;
+  width: 200px;
+  left: 70%;
+  transform: translateX(-50%);
+  color: #555;
+  background: none;
+  border: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 300;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.defenderFirstDice{
+  top: 10%;
+}
+
+.defenderSecondDice{
+  top: 40%;
+}
+
+
+/*end of defender*/
+
+
+
+/*Army area*/
+.armyArea {
+  position: absolute;
+  width: 200px;
+  left: 51%;
+  top: 20%;
+  transform: translateX(-50%);
+  color: #555;
+  background: none;
+  border: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 300;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-force{
+  top: 350px;
+}
+
+
+
+/*end of army*/
+
+
+
+
+
+/*output area*/
+.output {
+  position: absolute;
+  width: 380px;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  color: #555;
+  background: none;
+  border: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 300;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.result{
+  font-size: 25px;
+  padding-left: 32.5%;
+}
+
+/*end of output area*/
+
+
+button {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: none;
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover { font-weight: 600; }
+button:hover i { margin-right: 20px; }
+
+button:focus {
+    outline: none;
+}
+
+
+
+.btn-new { top: 45px;}
+.btn-roll { top: 403px;}
+.btn-hold { top: 467px;}

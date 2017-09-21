@@ -32,7 +32,7 @@ document.querySelector('.changeButton').addEventListener('click', function(){
 
     startTest = setInterval(function(){
 
-    randomNumber = Math.floor((Math.random() * 25) + 1);
+    randomNumber = Math.floor((Math.random() * 26));
 
     if(caseStyle === 'upper'){
       displayArea.innerHTML = `<p>${words[randomNumber].toUpperCase()}</p>`

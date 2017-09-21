@@ -1,0 +1,19 @@
+body{
+  background: url('http://dxsohu.com/wp-content/uploads/2017/06/Black-and-White-Background-NP29.jpg');
+
+
+  background: linear-gradient(-90deg, #919191, #ffffff); /* Standard syntax */
+
+}
+
+img{
+  width:200px;
+  height: 200px;
+  display:none;
+  float:left;
+}
+
+.scissorsComputer{
+  transform: scaleX(-1);
+  filter: FlipH;
+}
