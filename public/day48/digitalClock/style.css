@@ -1,0 +1,28 @@
+*{
+  margin:0;
+  padding:0;
+  font-size: 20px;
+
+}
+
+body{
+  background-color: #000000;
+}
+
+.clock{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: #00ed4f;
+  font-size: 80px;
+  border: 1px solid #1f7c00;
+}
+
+.timeField{
+  font-size: 120px;
+}
+
+button{
+  background-color: #002616;
+}
