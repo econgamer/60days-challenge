@@ -1,0 +1,41 @@
+.movie{
+  padding: 25px;
+  max-width: none;
+  max-height: none;
+}
+
+.movie img{
+  height: 278px;
+}
+
+
+.title{
+  font-size: 12px;
+}
+
+.details{
+  font-size: 10px;
+  background-color: white;
+}
+
+.searchArea{
+  display: inline;
+}
+
+.searchArea input{
+  margin-top: 3%;
+}
+
+.popularityArea{
+  margin-top: 80px;
+}
+
+#movieDetails{
+  margin-top: 80px;
+  font-size: 16px;
+}
+
+
+.credit{
+  
+}
