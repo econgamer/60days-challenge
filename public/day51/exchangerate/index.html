@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+    <meta charset="utf-8" />
+    <title>Exchange Rates</title>
+  </head>
+    <body>
+      <div class="main-div">
+
+
+
+        <div class="mainArea">
+          <h1>Exchange Rates</h1>
+          <input type="text" id="searchDate" placeholder="Enter Date 2017-09-28" value="2017-09-28"/>
+
+          <input type="text" id="searchCurrency" placeholder="Enter the currency Eg.usd" value="usd"/>
+
+          <input type="text" id="searchAmount" placeholder="" value="1"/>
+
+
+          <button id="search" type="button" class="btn">Search</button>
+
+
+          <table id="output" class="header-fixed">
+            <tr>
+               <th style="width: 100px;">Currency</th>
+               <th>Rate</th>
+            </tr>
+          </table>
+
+
+
+              <div style="position: absolute; top: 800px; left: 45%; margin:auto">
+
+                Credit to: Fixer.io</br>
+                Source:Tthe European Central Bank.</br>
+                The rates are updated daily around 4PM CET.
+              </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- <ul class="result" id="output"></ul>
+        <ul class="result" id="output2"></ul> -->
+      </div>
+
+    </body>
+
+      <script src="app.js"></script>
+
+
+
+
+
+</html>
