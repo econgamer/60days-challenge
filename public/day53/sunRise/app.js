@@ -86,7 +86,7 @@ function getTimeZone(){
       var sunSetTimePeriod = sunSetTime.charAt(sunSetTime.length - 2);
       console.log("Time period" + sunSetTimePeriod);
 
-
+      console.log(data.countryName);
 
 
 
@@ -108,7 +108,7 @@ function getTimeZone(){
       var sunRiseTimeRemaining = sunRiseTime.substring(sunRiseTime.indexOf(':'), 8);
       var sunSetTimeRemaining = sunSetTime.substring(sunSetTime.indexOf(':'), 8);
 
-      $("#output").html(`SunRise Time: ${sunRiseTimeConvert}${sunRiseTimeRemaining} </br> SunSet Time: ${sunSetTimeConvert}${sunSetTimeRemaining}`);
+      $("#output").html(`In your location(${data.countryName}) <br> SunRise Time: ${sunRiseTimeConvert}${sunRiseTimeRemaining} </br> SunSet Time: ${sunSetTimeConvert}${sunSetTimeRemaining}`);
 
 
 
