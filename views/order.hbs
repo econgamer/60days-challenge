@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ordering System</title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/gameReview.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  </head>
+  <body>
+
+    <h1>Food Ordering System</h1>
+
+    <button id="btn" class="btn-select" value="Salad">Salad</button>
+    <button id="btn" class="btn-select" value="Chips">Chips</button>
+    <button id="btn" class="btn-select" value="Coke">Coke</button>
+    <button id="btn" class="btn-select" value="BigMac">Big Mac</button>
+
+
+    <div id="record"></div>
+    <div style="margin-top: 20px; margin-bottom: 20px;" id="totalAmount"></div>
+
+    <form method="post">
+      <!-- for storing -->
+      <input style="width: 0px; height: 0px; border:none;" class="store" id="store" name="store" value="" />
+      <input style="width: 0px; height: 0px; border:none;" class="amountStore" id="amountStore" name="amountStore" value="" />
+      <button id="submit">Purchases</button>
+    </form>
+
+  </body>
+
+
+  <script>
+
+  var storeArray = [];
+  var priceMenu = {Salad: 50, Chips: 10, Coke: 5, BigMac: 20};
+
+
+  var bns = document.querySelectorAll("#btn");
+  var deleteBtn = document.querySelectorAll("#delete");
+  var store = document.querySelector('.store');
+  var amountStore = document.querySelector('.amountStore');
+  var record = document.querySelector('#record');
+
+  addtoev();
+  addDeleteBtn();
+
+  function addtoev() {
+    console.log(bns);
+    for (i = 0; i < bns.length; i++) {
+
+      bns[i].addEventListener("click", function(data) {
+        console.log(data.target.innerHTML);
+        var food = data.target.innerHTML;
+        var foodTag = food.replace(/\s/g, '');
+
+        var price = priceMenu[`${foodTag}`];
+
+        storeArray.push(food);
+        //store.value += `${food}`;
+        record.innerHTML += `<div>
+          ${food} <button value="${food}" id="delete">X</button>
+          <span>$</span><p style="display: inline" class="price"> ${price} </p>
+        </div>`;
+        console.log(storeArray);
+
+        deleteBtn = document.querySelectorAll("#delete");
+
+
+
+        addDeleteBtn();
+        store.value = `${storeArray}`;
+
+        calculateTotalPrice();
+      });
+     }
+  }
+
+  function addDeleteBtn(){
+
+    for (i = 0; i < deleteBtn.length; i++) {
+
+      deleteBtn[i].addEventListener("click", function(data) {
+        var foodToDelete = data.target.value;
+        console.log(foodToDelete);
+
+        storeArray.splice(storeArray.indexOf(foodToDelete), 1);
+        console.log(storeArray);
+        this.parentNode.innerHTML = "";
+
+        store.value = `${storeArray}`;
+
+        calculateTotalPrice();
+     });
+  }
+}
+
+  function calculateTotalPrice(){
+    var priceDOM = document.querySelectorAll(".price");
+    var totalAmountDOM = document.querySelector('#totalAmount');
+    console.log("Price = " + priceDOM.length);
+    var totalAmount = 0;
+
+    for (i = 0; i < priceDOM.length; i++) {
+      console.log("Price = " + priceDOM[i].textContent);
+      totalAmount += parseInt(priceDOM[i].textContent);
+    }
+
+    totalAmountDOM.innerHTML = `Total: $${totalAmount}`;
+    totalAmountDOM.style.textDecorationLine = "overline";
+    amountStore.value = totalAmount;
+
+  }
+
+
+
+
+  // document.querySelector('.btn-select').addEventListener('click', function(data){
+  //   var food = data.target.innerHTML;
+  //   store.textContent += `${food}`;
+  //
+  //   // var attackerInput = document.querySelector('.attackerArmy').value;
+  //   // var defenderInput = document.querySelector('.defenderArmy').value;
+  //   //
+  //   // attackerForce = attackerInput;
+  //   // defenderForce = defenderInput;
+  //   //
+  //   // attackerRemaining.textContent = `Remaining: ${attackerForce}`;
+  //   // defenderRemaining.textContent = `Remaining: ${defenderForce}`;
+  // });
+
+
+
+
+
+  </script>
+</html>

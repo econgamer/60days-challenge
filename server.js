@@ -377,11 +377,43 @@ app.post('/poll', (req, res) => {
 });
 
 
-
-
-
 // end of day 42
 
+
+// day 54
+
+const food = require('./public/day54/food');
+
+app.get('/orderSystem', (req, res) => {
+    food.find({}).exec(function(err, data){
+      res.render('order.hbs', {
+        name: data
+      });
+    });
+  }, (err) => {
+    res.render('maintenance.hbs');
+});
+
+
+// Create new ordering
+app.post('/orderSystem', (req, res) => {
+  console.log(req.body);
+  const newOrder = new food({ order: req.body.store, amount: req.body.amountStore});
+  newOrder.save().then(() => {
+      food.find({}).exec(function(err, data){
+        res.render('orderSuccess.hbs', {
+          name: data
+        });
+      });
+    }, (err) => {
+      res.render('maintenance.hbs');
+    });
+});
+
+
+
+
+// end of day 54
 
 
 
