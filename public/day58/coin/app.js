@@ -4,6 +4,7 @@ $(document).ready(function() {
   var randomNum;
 
   $('.flip').click(function(){
+    $.stopSound();
     randomNum = Math.floor((Math.random() * 10) + 1);
 
     if(cheatHead){
