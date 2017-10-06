@@ -1,0 +1,18 @@
+.main-div{
+  width: 100%;
+  height: 100%;
+}
+
+.coinArea{
+  margin-top: 10%;
+  margin-left: 40%;
+}
+
+.flip{
+  margin-left: 10%;
+  margin-top: 3%;
+  padding: 0;
+  border: none;
+  padding: 10px;
+
+}
