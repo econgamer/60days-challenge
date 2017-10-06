@@ -4,7 +4,7 @@ $(document).ready(function() {
   var randomNum;
 
   $('.flip').click(function(){
-    $.stopSound();
+    // $.stopSound();
     randomNum = Math.floor((Math.random() * 10) + 1);
 
     if(cheatHead){
@@ -19,7 +19,9 @@ $(document).ready(function() {
 
     console.log(randomNum);
 
-    $.playSound('coinflip.mp3')
+    var audio = new Audio('coinflip.mp3');
+    audio.play();
+    // $.playSound('coinflip.mp3')
 
 
 
