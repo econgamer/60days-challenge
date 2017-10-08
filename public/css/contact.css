@@ -25,11 +25,11 @@ html, body{
   margin: auto;
   color: #ffffff;
 
-  background: linear-gradient(
+  /*background: linear-gradient(
                      rgba(0,0,0, 0),
                      rgba(0,0,0, 0.75)),
-                     url('day20-pexels.jpeg');
-  /*background: #3B5998;*/
+                     ;*/
+  background: #3B5998;
 
   display:table;
   top: 0;

@@ -1,0 +1,17 @@
+body{
+
+    background: url("/css/img/background.jpeg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    font-weight: 700;
+
+}
+
+
+h1{
+  font-family: 'Amatic SC', cursive;
+}
