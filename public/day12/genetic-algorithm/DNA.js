@@ -13,7 +13,7 @@
 //      -- mutate DNA
 
 function newNum() {
-  var num = floor(random(0,255));
+  var num = floor(random(0,256));
   return num;
 }
 

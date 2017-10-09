@@ -102,7 +102,7 @@ function keyPressed() {
 function draw() {
   if(population){
     if(!population.isFinished()){
-      console.log(population.isFinished());
+
       // Generate mating pool
       population.naturalSelection();
       //Create next generation
@@ -130,10 +130,49 @@ function draw() {
       populationText.html('Population: ' + popmax)
       generationText.html('Generation: ' + population.getGenerations())
 
+      console.log(typeof(answer));
 
-      var v1 = answer.substring(0,2);
-      var v2 = answer.substring(2,4);
-      var v3 = answer.substring(4,6);
+      if(redInput.value() >= 100){
+        var v1 = answer.substring(0,3);
+        answer = answer.slice(3);
+      }else if(redInput.value() >= 10){
+        var v1 = answer.substring(0,2);
+        answer = answer.slice(2);
+      }else{
+        var v1 = answer.substring(0,1);
+        answer = answer.slice(1);
+      }
+
+      if(greenInput.value() >= 100){
+        var v2 = answer.substring(0,3);
+        answer = answer.slice(3);
+      }else if(greenInput.value() >= 10){
+        var v2 = answer.substring(0,2);
+        answer = answer.slice(2);
+      }else{
+        var v2 = answer.substring(0,1);
+        answer = answer.slice(1);
+      }
+
+      if(blueInput.value() >= 100){
+        var v3 = answer.substring(0,3);
+        answer = answer.slice(3);
+      }else if(blueInput.value() >= 10){
+        var v3 = answer.substring(0,2);
+        answer = answer.slice(2);
+      }else{
+        var v3 = answer.substring(0,1);
+        answer = answer.slice(1);
+      }
+
+
+
+
+
+
+      console.log("v1: " + v1);
+      console.log("v2: " + v2);
+      console.log("v3: " + v3);
 
       fill(v1,v2,v3);
       ellipse(56, 46, 55, 55);

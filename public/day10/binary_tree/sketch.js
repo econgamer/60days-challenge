@@ -15,7 +15,6 @@ function setup(){
   tree.insertValue(2);
   tree.insertValue(9);
   tree.insertValue(31);
-  console.log(tree);
   tree.traversal();
 
   output = select('#output');

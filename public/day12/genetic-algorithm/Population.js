@@ -67,9 +67,13 @@ function Population(p, m, num) {
       var b = floor(random(this.matingPool.length));
       var partnerA = this.matingPool[a];
       var partnerB = this.matingPool[b];
-      var child = partnerA.crossover(partnerB);
-      child.mutate(this.mutationRate);
-      this.population[i] = child;
+
+      if(partnerA != undefined){
+        var child = partnerA.crossover(partnerB);
+        child.mutate(this.mutationRate);
+        this.population[i] = child;
+      }
+
     }
     this.generations++;
   }

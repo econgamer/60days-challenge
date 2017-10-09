@@ -63,11 +63,11 @@ Node.prototype.addValue = function(node){
         this.right.x = this.x + 100;
         this.right.y = this.y + 30;
         firstTimeRight = false;
-        console.log('run');
+
       }else{
         this.right.x = this.x + 50;
         this.right.y = this.y + 30;
-        console.log('run');
+        
       }
 
 
@@ -83,7 +83,7 @@ Node.prototype.visit = function(parent){
   if(this.left != null){
     this.left.visit(this);
   }
-  console.log(this.value);
+
 
   fill(255);
   stroke(255);
@@ -116,7 +116,7 @@ Node.prototype.removeValue = function(val, parent){
       // If E has a child, say F, it is a right child. Replace E with F at E's parent.
       var theMostLeft = this.right.searchTheLeft();
       this.value = theMostLeft.value;
-      console.log('first run' + theMostLeft.value);
+
       theMostLeft.removeValue(theMostLeft.value);
 
 
@@ -124,7 +124,7 @@ Node.prototype.removeValue = function(val, parent){
       this.left.value = this.left.value;
       this.left.removeValue(this.left.value);
     }else if(this.right != null){
-      console.log('Second run' + this.right.value);
+
       this.value = this.right.value;
       this.right.removeValue(this.right.value, this);
     }

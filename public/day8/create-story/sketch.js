@@ -14,6 +14,7 @@ function setup(){
   input = select('#txt');
   output = select('#output');
   submit = select('#submit');
+  inform = select('#inform');
   submit.mousePressed(newText);
   displayValue = [];
   dancingWords= [];
@@ -23,11 +24,9 @@ function setup(){
 
 function newText(){
 
-
+  inform.html("<p>Please click the word(s)</p>");
   var inputValue = input.value();
-  console.log(inputValue)
   var text = inputValue.split(/(\W+)/);
-  console.log(text);
 
   for(var i = 0; i < text.length; i++){
     var textSpan = createSpan(text[i]);
@@ -62,6 +61,8 @@ function textEffect(){
     //this.html(`<img src="${this.html()}.png"></img>`);
 
     this.pressed = true;
+
+    inform.html("");
   }
 
 

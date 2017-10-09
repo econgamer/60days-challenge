@@ -14,7 +14,6 @@ function googleApiClientReady(){
         function search() {
                 randomNum = Math.floor((Math.random() * wordList.length));
                 var randomWords = wordList[randomNum];
-                console.log(randomWords);
                 var q = $('#query').val();
                 var dataTime = new Date();
                 dataTime.setDate(1);
@@ -30,7 +29,7 @@ function googleApiClientReady(){
                 request.execute(function(response) {
                   var str = JSON.stringify(response.result);
                   var randomVideo = Math.floor((Math.random() * response.items.length));
-                  console.log(response.items[0].id.videoId);
+
                   var url = `https://www.youtube.com/embed/${response.items[randomVideo].id.videoId}`;
                   $('#search-container').html(`<iframe className="embed-responsive-item" src=${url}></iframe>`);
                 });
