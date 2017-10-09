@@ -34,7 +34,7 @@
     var controller = {};
     var enemies = [];
     var player = createObj('player',250,450,20,20);
-    console.log(player);
+
     var laser = createObj('laser', 0, -120, 2, 50);
 
 
@@ -141,7 +141,7 @@
     }
 
     function addEnemy(){
-      console.log(level);
+
       var enemiesRate = 50;
       if(level > 200){
         enemiesRate = 5;

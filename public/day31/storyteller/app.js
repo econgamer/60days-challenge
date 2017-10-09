@@ -45,7 +45,7 @@ function checkCompatibilty () {
 			var rate = 0.5;
 			var pitch = 0.5;
       var synth = window.speechSynthesis;
-      console.log(myText)
+
 
 			var voiceMap = [];
 
@@ -74,7 +74,7 @@ function checkCompatibilty () {
 
         if (speechSynthesis.speaking) {
           synth.cancel();
-          console.log('cancel');
+
 
           if (sayTimeout !== null)
             clearTimeout(sayTimeout);

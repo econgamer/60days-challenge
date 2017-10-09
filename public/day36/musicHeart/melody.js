@@ -1,35 +1,12 @@
 
 function Melody(rms){
 
-  // this.sound = soundFile;
-  //
-  // this.randomNumRed = Math.floor(Math.random() * (255 - 0)) + 0;
-  // this.randomNumGreen = Math.floor(Math.random() * (255 - 0)) + 0;
-  // this.randomNumBlue = Math.floor(Math.random() * (255 - 0)) + 0;
-  //
-  // this.randomColor = color(this.randomNumRed,this.randomNumGreen,this.randomNumBlue);
-  // console.log(this.randomColor);
-  // this.isPlaying = false;
 
-  //this.position = p5.Vector.random2D();
   this.position = createVector(width/2, height/2);
 
   this.velocity = createVector(0,0);
   this.acceleration = createVector(0.01,0.01);
   this.maxSpeed = 5;
-
-
-  // this.position.x *= width/2;
-  // if(this.position.x < 0){
-  //   this.position.x *= -1;
-  // }
-
-  // this.position.y *= height/2;
-  // if(this.position.y < 0){
-  //   this.position.y *= -1;
-  // }
-
-
 
   this.move = function(){
     this.velocity.add(this.acceleration);

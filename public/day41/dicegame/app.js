@@ -86,7 +86,6 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     }
   }
 
-  console.log('MaxDice = ' + maxDice + 'secondMaxDice = ' + secondMaxDice);
 
   //end of attacker
 
@@ -124,8 +123,6 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
       secondDefend = defenderDice[i];
     }
   }
-
-  console.log('First Defend = ' + firstDefend + 'Second Defend = ' + secondDefend);
 
 
   //end of defender
@@ -178,157 +175,3 @@ function resultCalculate(maxDice, secondMaxDice, firstDefend, secondDefend){
   }
 
 }
-
-
-// var scores, roundScore, activePlayer, gamePlaying, saveSlot, savable;
-//
-// init();
-//
-//
-// document.querySelector('.btn-roll').addEventListener('click', function(){
-//
-//     if(gamePlaying){
-//
-//         console.log(saveSlot);
-//
-//         savable = true;
-//
-//         //1. Random number
-//         var dice = Math.floor(Math.random() * 6) + 1;
-//         var dice2 = Math.floor(Math.random() * 6) + 1;
-//         //var dice = 6;
-//
-//         //2. Display the result
-//         var diceDOM = document.querySelector('.dice');
-//         diceDOM.style.display = 'block';
-//         diceDOM.src = 'dice-' + dice + '.png';
-//
-//         var diceDOM = document.querySelector('.dice2');
-//         diceDOM.style.display = 'block';
-//         diceDOM.src = 'dice-' + dice2 + '.png';
-//
-//
-//
-//         //3. Update the round score IF the rolled number was NOT a 1
-//         if(dice !== 1 & dice2 !==1 ){
-//
-//             roundScore += dice;
-//             document.querySelector('#current-' + activePlayer).textContent = roundScore;
-//
-//             //Challenges 1
-//             if(dice === 6 && saveSlot === 6){
-//                 scores[activePlayer] = 0;
-//
-//                  // Update the UI
-//                 document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-//
-//                 //console.log("your scores now is " + scores[activePlayer]);
-//                 nextPlayer();
-//
-//             }
-//         }
-//
-//         else{
-//             //Next Player
-//           nextPlayer();
-//
-//
-//     //document.querySelector('.player-0-panel').classList.remove('active');
-//     //document.querySelector('.player-1-panel').classList.add('active');
-//         }
-//
-//          //4. save the dice amount
-//         if(savable){
-//             saveSlot = dice;
-//         }else{
-//             saveSlot = 0;
-//         }
-//
-//
-//     }
-//
-//
-// });
-//
-//
-// document.querySelector('.btn-hold').addEventListener('click', function(){
-//     if(gamePlaying){
-//          // Add Current score to GLOBAL score
-//         scores[activePlayer] += roundScore;
-//
-//
-//         // Update the UI
-//         document.querySelector('#score-' + activePlayer).textContent =  scores[activePlayer];
-//
-//         // Check if player won the game
-//         if(scores[activePlayer] >= document.getElementById('textbox').value){
-//             document.getElementById('name-'+activePlayer).textContent = 'Winner';
-//             document.querySelector('.dice').style.display = 'none';
-//             document.querySelector('.player-' +activePlayer + '-panel').classList.add('winner');
-//             document.querySelector('.player-' +activePlayer + '-panel').classList.remove('active');
-//             gamePlaying = false;
-//         }else{
-//             //Next player
-//             nextPlayer();
-//         }
-//
-//
-//
-//     }
-//
-//
-//
-// });
-//
-// function nextPlayer(){
-//      //Next Player
-//         if(activePlayer === 0){
-//             activePlayer = 1;
-//         }else{
-//             activePlayer = 0;
-//         }
-//         roundScore = 0;
-//         saveSlot = 0;
-//         savable = false;
-//
-//         document.getElementById('current-0').textContent = '0';
-//         document.getElementById('current-1').textContent = '0';
-//
-//         document.querySelector('.player-0-panel').classList.toggle('active');
-//         document.querySelector('.player-1-panel').classList.toggle('active');
-//
-//         document.querySelector('.dice').style.display = 'none';
-// }
-//
-// document.querySelector('.btn-new').addEventListener('click', init);
-//
-// function init(){
-//     scores = [0,0];
-//     roundScore = 0;
-//     activePlayer = 0;
-//     gamePlaying = true;
-//     saveSlot = 0;
-//
-//     document.querySelector('.dice').style.display = 'none';
-//
-//     document.getElementById('score-0').textContent = '0';
-//     document.getElementById('score-1').textContent = '0';
-//     document.getElementById('current-0').textContent = '0';
-//     document.getElementById('current-1').textContent = '0';
-//     document.getElementById('name-0').textContent = 'Player1';
-//     document.getElementById('name-1').textContent = 'Player2';
-//     document.querySelector('.player-0-panel').classList.remove('winner');
-//     document.querySelector('.player-1-panel').classList.remove('winner');
-//     document.querySelector('.player-0-panel').classList.remove('active');
-//     document.querySelector('.player-1-panel').classList.remove('active');
-//     document.querySelector('.player-0-panel').classList.add('active');
-//
-//
-// }
-
-
-
-
-//document.querySelector('#current-' + activePlayer).textContent = dice;
-//var x = document.querySelector('#score-0').textContent;
-//console.log(x);

@@ -23,9 +23,8 @@ function setup(){
 
 function newText(){
   var inputValue = input.value();
-  //console.log(inputValue);
   var rule = /\w+/g;
-  //console.log(text);
+
 
   var filterValue = inputValue.replace(rule, replacer);
   output.html(filterValue);

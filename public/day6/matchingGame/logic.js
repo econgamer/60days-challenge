@@ -31,13 +31,13 @@ $(document).ready(function(){
         if(!firstClick){
           firstClick = true;
           number1 = $(this).val();
-          console.log("NUMBER 1" + number1);
+
           id1 = $(this).attr('id');
           $("span", this).text(number1);
         }else if(!secondClick){
           secondClick = true;
           number2 = $(this).val();
-          console.log("NUMBER 2" + number2);
+
           id2 = $(this).attr('id');
           $("span", this).text(number2);
           nextTurn(number1 === number2, id1, id2);
@@ -77,7 +77,7 @@ $(document).ready(function(){
 
   function nextTurn(match, id1, id2){
     if(match){
-      console.log('run');
+
       // $("#1").text("My NEW Text");
       $('#'+id1).removeClass("btn-primary selectButton").off('click');
       $('#'+id2).removeClass("btn-primary selectButton").off('click');
@@ -109,7 +109,7 @@ $(document).ready(function(){
     number2 = '';
     secondClick = false;
     firstClick = false;
-    console.log('reset');
+
   }
 
 

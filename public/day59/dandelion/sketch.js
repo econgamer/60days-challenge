@@ -47,7 +47,6 @@ function CheckToEvolve(){
 
       for(var i = 1; i <= counter; i ++){
 
-          console.log("Counter: " + counter);
 
           if(treeLength - i == 0){
             break;
@@ -58,15 +57,7 @@ function CheckToEvolve(){
           tree.push(stick);
           tree.push(stick2);
           count += 1;
-        // }else if(i % 2 == 0){
-        //   console.log("Counter+" + counter);
-        //   console.log(treeLength);
-        //   stick2 = new Stick({x:tree[treeLength - i].positionAnother.x, y:tree[treeLength - i].positionAnother.y, height: tree[treeLength - i].height});
-        //   tree.push(stick2);
-        //   count += 1;
-        // }
 
-      // }
 
       oldLength = treeLength;
 
@@ -75,12 +66,7 @@ function CheckToEvolve(){
 
 
     counter = counter * 2;
-    console.log("Counter" + counter);
-    // stick = new Stick({x:tree[tree.length - 1].position.x, y:tree[tree.length - 1].position.y, height: tree[tree.length - 1].height});
-    // tree.push(stick);
-    //
-    // stick2 = new Stick({x:tree[tree.length - 2].positionAnother.x, y:tree[tree.length - 2].positionAnother.y, height: tree[tree.length - 2].height});
-    // tree.push(stick2);
+
 
 
 
@@ -105,6 +91,6 @@ function FirstToEvolve(){
 
 
 
-function mousePressed() {
-  console.log(`MouseX: ${mouseX}, MouseY: ${mouseY}`);
-}
+// function mousePressed() {
+//   console.log(`MouseX: ${mouseX}, MouseY: ${mouseY}`);
+// }

@@ -92,7 +92,6 @@ function draw(){
     }
   }
 
-  console.log(rate);
   //frame control
   frame += rate;
   if(frame >= 1800){

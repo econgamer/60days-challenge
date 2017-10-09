@@ -14,7 +14,7 @@ $(document).ready(function() {
       async:false,
       dataType:"json",
       success: function(data){
-        console.log(data);
+      
         $('#output').html("<tr> <th style='width: 100px;'>Currency</th> <th>Rate</th> </tr>");
 
         for(var fxRate in data.rates) {

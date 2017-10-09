@@ -45,24 +45,6 @@ $( document ).ready(function() {
 
 
 
-  // $messageForm.submit(function(e){
-  //   e.preventDefault();
-  //   console.log('submit');
-  //
-  //
-  //   $message.val('');
-  //
-  // });
-
-
-  // $('#message').keypress(function (e) {
-  //   if (e.which == 13) {
-  //     $messageForm.submit();
-  //     return false;    //<---- Add this line
-  //   }
-  // });
-
-
 
   //userForm submit
   $questionArea.submit(function(e){

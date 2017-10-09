@@ -20,11 +20,8 @@
 
       var add = document.getElementById('check').checked;
 
-      console.log(startDate);
-      console.log('hihi');
-      console.log(m1);
       var diff = Math.abs( m1.diff(m2) );
-      console.log(moment.duration(diff).format("d [days]"));
+
       var result = moment.duration(diff).format("D");
 
       if(add){

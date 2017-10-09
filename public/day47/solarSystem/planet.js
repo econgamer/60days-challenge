@@ -53,11 +53,7 @@ function Planet(x, y, radians) {
     fill(this.colorR, this.colorG, this.colorB);
     ellipse(this.x, this.y, this.size, this.size);
 
-    console.log('MouseX: ' + mouseX);
-
-    // fill(255);
-    // rectMode(CENTER);
-    // rect(this.x, this.y, 20, 20);
+  
   }
 
 

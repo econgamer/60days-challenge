@@ -97,7 +97,7 @@
     function loop(){
       if(new Date().getTime() -  lastLoopTime> 10){
         // counter++;
-        // console.log(counter);
+
         update();
 
         if(new Date().getTime() - rocketTime > 13000){
@@ -135,7 +135,7 @@
     var player = createObj('player',150,700,30,30);
     var rocket = createObj('rocket',1200,700 - 300 +75,10,300);
     var controller = {};
-    console.log(player);
+
     positionSetting(player);
     positionSetting(rocket);
     loop();

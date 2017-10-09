@@ -26,7 +26,7 @@ function Line(x, y) {
       this.random = Math.floor(Math.random() * 10);
       text(this.random, this.x, this.speed + i * 10);
       randomList.push(this.random);
-      console.log(randomList);
+
 
     }
 
@@ -36,7 +36,7 @@ function Line(x, y) {
   }
 
   this.generateWord = function(){
-    console.log(randomList);
+
     word = Math.floor(Math.random() * generateLength);
 
     randomList[word] = Math.floor(Math.random() * 10);

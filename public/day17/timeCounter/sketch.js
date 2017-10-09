@@ -19,13 +19,13 @@ function setup(){
   background(56);
 
   var params = getURLParams();
-  console.log(params);
+
 
   if(params.sec){
     seconds = Number(params.sec);
   }else{
     seconds = 0;
-    console.log('second clean');
+
   }
 
   if(params.min){
@@ -45,7 +45,7 @@ function setup(){
 
 
   totalSeconds = seconds + minutes * 60 + hours * 60 * 60;
-  console.log(totalSeconds);
+
 }
 
 function draw() {
@@ -72,16 +72,14 @@ function countDown(){
     totalSeconds -= 1;
 
     hours = Math.floor(totalSeconds / (60 * 60));
-    console.log(totalSeconds);
+
 
 
     // minutes = Math.floor((totalSeconds / 60));
     minutes = Math.floor((totalSeconds - (hours * 60 * 60)) / 60);
     seconds = Math.floor(totalSeconds - (hours * 60 * 60) - (minutes * 60));
 
-    console.log('Hours' + hours);
-    console.log('mins' + minutes);
-    console.log('seconds' + seconds);
+
   }else{
     clearInterval(interval);
     soundFile.play();

@@ -31,8 +31,6 @@ function draw() {
   image(img, displayWidth/2, displayHeight/2 , img.width + rms * 400, img.height + rms * 400);
 
 
-  console.log(rms);
-
   fill(127);
   stroke(0);
 

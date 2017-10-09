@@ -13,7 +13,7 @@ function Rain(){
       this.y += speed;
       if(new Date().getTime() -  lastLoopTime> 200){
             this.z = random(-10, 10);
-            //console.log('hihi');
+
             lastLoopTime = new Date().getTime();
       }
 
@@ -43,22 +43,8 @@ function Rain(){
     //stroke(255);
     fill(255);
     rect(this.x + this.z, this.y, this.w, this.h);
-    //console.log(this.y);
-    //line(this.x,this.y,targetX,this.y);
-    //
-    // var sx = map(this.x / this.z, 0, 1, 0, width);
-    // var sy = map(this.y / this.z, 0, 1, 0, height);
-    //
-    // var r = map(this.z, 0, width, 16, 0);
-    // ellipse(sx, sy, r, r);
-    //
-    // var px = map(this.x / this.pz, 0, 1, 0, width);
-    // var py = map(this.y / this.pz, 0, 1, 0, height);
-    //
-    // this.pz = this.z;
-    //
-    // stroke(255);
-    // line(px, py, sx, sy);
+
+    
 
   }
 }

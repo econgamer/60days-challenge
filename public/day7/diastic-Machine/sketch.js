@@ -23,7 +23,7 @@ function fileSelected(file){
     createP("I need a text file.");
   }
 
-  console.log(file);
+
 }
 
 function setup(){

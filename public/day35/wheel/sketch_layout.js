@@ -8,7 +8,7 @@ var temperature = Math.floor((Math.random() * 255));
 var diameter = 300;
 
 function setup(){
-  console.log(displayWidth);
+
   createCanvas(displayWidth, 900);
   wheel = new Wheel(diameter, angles);
 

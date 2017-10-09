@@ -82,7 +82,7 @@
 
                         $(`#${searchCount}`).append(`<p id="${searchCount}"> ${searchCount} : ${pastWord} > ${data[0].words[i]} </p>`);
                         resultList[`${searchCount}`] = data[0].words[i];
-                        console.log(resultList);
+
 
 
                       }else if(count > 10){
@@ -93,7 +93,7 @@
                       if(totalCount > 100){
                         $('#101').html('');
                         $("#101").removeClass("resultStyle");
-                        console.log('break');
+
                         break;
                       }
 
@@ -106,7 +106,7 @@
                         divTrigger = true;
                       }
 
-                      //console.log(data[i]);
+
 
                     }
 
@@ -130,16 +130,7 @@
 
 
 
-            // for( var i = 0; i < 150; i ++){
-            //   if($( `#${i}` )){
-            //
-            //     $("#searchResult").find(`#${i}`).each(function(){ $( `#${i}` ).wrap( "<div class='new'></div>" ); });
-            //
-            //     // $( `#${i}` ).wrap( "<div class='new'></div>" );
-            //     console.log('Parent assigned');
-            //   }
-
-            // }
+          
 
 
 

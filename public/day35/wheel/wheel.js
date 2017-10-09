@@ -29,12 +29,12 @@ function Wheel(diameter, angles) {
     // Movement reset
     if(this.movement >= 360){
       this.movement = 0;
-      console.log('movement reset');
+
     }
 
     // degree detecting
     arc1Degree = this.movement;
-    console.log(arc1Degree);
+
     if(arc1Degree > 270){
       fill('green');
       textSize(33);
@@ -60,7 +60,6 @@ function Wheel(diameter, angles) {
 
     fill('green');
     this.arc2 = arc(displayWidth/2, height/2, this.diameter, this.diameter,  radians(180 + this.movement),  radians(180 + this.movement) + radians(this.angles[1]));
-    //console.log('arc2 : ' , this.arc2);
 
 
   }

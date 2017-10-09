@@ -13,7 +13,6 @@ var testOutput = document.querySelector('.testOutput');
 
 document.querySelector('.changeButton').addEventListener('click', function(){
   clearInterval(startTest);
-  console.log('clean');
 
 
 });
@@ -27,7 +26,7 @@ document.querySelector('.changeButton').addEventListener('click', function(){
 
   testOutput.textContent = '';
 
-  console.log(caseStyle);
+
 
 
     startTest = setInterval(function(){
@@ -45,7 +44,7 @@ document.querySelector('.changeButton').addEventListener('click', function(){
     displayArea.style.fontFamily = `${fontStyle}`;
 
     displayArea.style.fontSize = `${fontInput}px`;
-    console.log(randomNumber);
+
 
    }, timeInput);
 

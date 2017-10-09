@@ -80,15 +80,12 @@ function draw(){
         value = 0;
       }
 
-      console.log(colorValue);
-
       if(colorValue < 30){
         consumed ++;
         colorValue = 183;
         value = -2.5;
       }
 
-      console.log(value);
     }
 
 

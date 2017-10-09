@@ -59,7 +59,6 @@ function draw() {
     for(var i = 0; i < numberOfNotes; i++){
       if(mouseX <= (75 * i + 75)){
         notes.push(new Note(mouseX, mouseY, soundFile[i]));
-        console.log("notes push" + i);
         break;
       }
     }
@@ -73,13 +72,10 @@ function mousePressed() {
   for(var i = 0; i < numberOfNotes; i++){
     if(mouseX <= (75 * i + 75)){
       notes.push(new Note(mouseX, mouseY, soundFile[i]));
-      console.log("notes push" + i);
       break;
     }
   }
 
-
-  console.log(mouseX);
 }
 
 function scannerDetect(){

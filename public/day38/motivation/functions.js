@@ -5,28 +5,11 @@ $( document ).ready(function() {
     $(window).scroll(function(){
       var farFromTop = $(this).scrollTop();
 
-      console.log(farFromTop);
+
 
       $('.fore-char').css({
         'transform': 'translate(0px, -' + farFromTop / 100 + '%)'
       });
-
-
-
-      // if(farFromTop > 500){
-      //   $('.fore-char3').css({
-      //     'transform': 'translate(0px, -' + (farFromTop/70) + '%)'
-      //   });
-      // }
-
-      // if(farFromTop<900){
-      //   $('.fore-char3').css({
-      //     'transform': 'translate(0px, ' - (farFromTop - 900)  + 'px)'
-      //   });
-      //
-      //   console.log('run again');
-      // }
-
 
 
       if(farFromTop < 900){
@@ -43,7 +26,7 @@ $( document ).ready(function() {
           'transform': 'translate(0px, -' + farFromTop / 150 + '%)'
         });
 
-        console.log('run!');
+
       }
 
 

@@ -11,7 +11,6 @@ function Note(x, y, soundFile){
   this.randomNumBlue = Math.floor(Math.random() * (255 - 0)) + 0;
 
   this.randomColor = color(this.randomNumRed,this.randomNumGreen,this.randomNumBlue);
-  console.log(this.randomColor);
   this.isPlaying = false;
 
 

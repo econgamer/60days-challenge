@@ -12,7 +12,7 @@ $(document).ready(function() {
     success: function(data){
       var result = data.results;
       $('#popularity').html('');
-      console.log(result);
+
       for(var i = 0; i < result.length; i++){
         $('#popularity').append(
           `
@@ -47,7 +47,7 @@ $(document).ready(function() {
     dataType:"json",
     success: function(data){
       var result = data.results;
-      console.log(result);
+
       $('#popularity').append(`
         <div class="col-md-12"><h2 style="border-bottom-style:inset; color: #757575;"">Latest Movies</h2></div>
 
@@ -102,7 +102,7 @@ $(document).ready(function() {
       success: function(data){
         var result = data.results;
         $('#popularity').html('');
-        console.log(result);
+
         for(var i = 0; i < result.length; i++){
           $('#popularity').append(
             `
@@ -133,9 +133,6 @@ $(document).ready(function() {
 
     $('.details').click(function(data){
       var movieId = data.target.value;
-      console.log(movieId);
-      console.log('click');
-
 
       $( "#popularity" ).fadeOut( "slow", function() {
         // Animation complete.
@@ -160,7 +157,7 @@ $(document).ready(function() {
         success: function(data){
 
           $('#movieDetails').html('');
-          console.log(data);
+
 
             $('#movieDetails').append(
               `
@@ -194,7 +191,6 @@ $(document).ready(function() {
             );
 
             for(var i =0; i < data.genres.length; i++){
-                console.log('append genres');
 
                 if(i === 0){
                   $('#movieDetails').append(`Genre: ${data.genres[i].name}`);
@@ -237,8 +233,7 @@ $(document).ready(function() {
 
   $('.details').click(function(data){
     var movieId = data.target.value;
-    console.log(movieId);
-    console.log('click');
+
     $( "#popularity" ).fadeOut( "slow", function() {
       // Animation complete.
     });
@@ -260,7 +255,6 @@ $(document).ready(function() {
       success: function(data){
 
         $('#movieDetails').html('');
-        console.log(data);
 
           $('#movieDetails').append(
             `
@@ -292,8 +286,7 @@ $(document).ready(function() {
           );
 
           for(var i =0; i < data.genres.length; i++){
-              console.log('append genres');
-
+              
               if(i === 0){
                 $('#movieDetails').append(`Genre: ${data.genres[i].name}`);
               }else if(i === data.genres.length - 1){

@@ -40,14 +40,7 @@ var bg;
 var score = 0;
 
 
-// var i = -1;
-// function setup() {
-//   noCanvas();
-//   grammar = tracery.createGrammar(story);
-//
-//   var result = grammar.flatten("#start#");
-//   console.log(result);
-// }
+
 
 function preload(){
   soundFormats('ogg', 'mp3');
@@ -65,19 +58,14 @@ function setup(){
 
   grammar = tracery.createGrammar(story);
   result = grammar.flatten("#story#");
-  console.log(result);
+
 
   displayWord = result;
 
   totalSeconds = seconds + minutes * 60 + hours * 60 * 60;
 
   bullets.push(bullet);
-  //testing
-  // console.log(result[0]);
-  //
-  // result = result.slice(1,result.length);
-  //
-  // console.log(result[0]);
+
 }
 
 //slice, index = 0
@@ -85,23 +73,10 @@ function setup(){
 
 function keyPressed(){
   keyCodePressed = String.fromCharCode(keyCode).toLowerCase();
-  console.log(keyCodePressed);
 
 
-  // if(keyCode === 65){
-  //   keyCodePressed = 'a';
-  //   console.log(keyCodePressed);
-  //   console.log(String.fromCharCode(65).toLowerCase());
-  // }
-  //
-  // if(keyCode === 80){
-  //   keyCodePressed = 'p';
-  //   console.log(keyCodePressed);
-  // }
-  //
-  // console.log(LEFT_ARROW);
-  // console.log(keyCode);
-  // return false; // prevent any default behaviour
+
+
 }
 
 
@@ -178,8 +153,7 @@ function countDown(){
     seconds = Math.floor(totalSeconds - (minutes * 60));
 
 
-    console.log('mins' + minutes);
-    console.log('seconds' + seconds);
+
   }else{
     clearInterval(interval);
     //soundFile.play();
@@ -187,7 +161,7 @@ function countDown(){
     //score
     result = "Your score is " + score;
 
-    console.log('clean');
+
     noLoop();
   }
 

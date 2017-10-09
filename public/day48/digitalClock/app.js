@@ -58,7 +58,7 @@ function checkAlarm(){
 
     for(var i = 0; i < alarmList.length; i++){
       if((parseInt(alarmList[i].alarmHour) ===  currentHours) && (parseInt(alarmList[i].alarmMin) === currentMinutes) ){
-        console.log("Match!!!!!!!!!");
+
 
         alarmList.splice(i,1);
         alarmSound = document.getElementById("myAudio");
@@ -66,7 +66,7 @@ function checkAlarm(){
 
 
         document.querySelector('.btn-stopAlarm').style.display = "block";
-        console.log(alarmList);
+
         checkDisplay();
       }
     }
@@ -88,11 +88,10 @@ document.querySelector('.btn-setAlarm').addEventListener('click', function(){
   alarmHour = document.querySelector('.alarmHour').value;
   alarmMin = document.querySelector('.alarmMin').value;
   alarmList.push({alarmHour, alarmMin});
-  console.log(alarmList);
+
   alarmSet = true;
 
-  console.log('Alarm Set, Hour: ' + alarmHour);
-  console.log('Min: ' + alarmMin);
+
   checkDisplay();
 });
 

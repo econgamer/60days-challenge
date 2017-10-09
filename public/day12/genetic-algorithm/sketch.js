@@ -130,7 +130,7 @@ function draw() {
       populationText.html('Population: ' + popmax)
       generationText.html('Generation: ' + population.getGenerations())
 
-      console.log(typeof(answer));
+
 
       if(redInput.value() >= 100){
         var v1 = answer.substring(0,3);
@@ -165,14 +165,6 @@ function draw() {
         answer = answer.slice(1);
       }
 
-
-
-
-
-
-      console.log("v1: " + v1);
-      console.log("v2: " + v2);
-      console.log("v3: " + v3);
 
       fill(v1,v2,v3);
       ellipse(56, 46, 55, 55);

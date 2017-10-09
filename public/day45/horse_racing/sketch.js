@@ -45,8 +45,6 @@ function setup(){
   speed6 = Math.floor((Math.random() * 20) + 5);
 
 
-  console.log(speed);
-
   //Horse Setup
   for(var i = 0; i < horsesNum; i++){
     var horse = new Horse(0, 100 * i + 50, i);
@@ -71,8 +69,6 @@ function reset(){
   speed5 = Math.floor((Math.random() * 10) + 1);
   speed6 = Math.floor((Math.random() * 10) + 1);
 
-
-  console.log(speed);
 
   //Horse Setup
   for(var i = 0; i < horsesNum; i++){
@@ -109,7 +105,7 @@ function draw(){
 
   if(result.length === horsesNum && !checked){
     finished = true;
-    console.log('finished');
+
   }
 
   if(finished){
@@ -147,7 +143,7 @@ function betHorse(horseNum){
         money -= betAmount;
       }
     }
-    console.log(horses);
+
 
   }
 

@@ -13,11 +13,10 @@ function Explosion(x, y) {
   this.explose = function() {
     this.r = this.r + 1000;
     setTimeout("this.r = this.r - 100;", 5000);
-    console.log(this.r);
+
   }
 
   var finished = function(){
-    console.log('finished');
     this.r = this.r - 100;
   }
 

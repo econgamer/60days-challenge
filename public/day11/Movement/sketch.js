@@ -42,7 +42,7 @@ function keyPressed() {
 function draw(){
   gravity = gSlider.value() * 0.1;
   mass = mSlider.value() * 0.1;
-  console.log(gravity);
+
   background(56);
 
   text("gravity: " + gravity, gSlider.x * 2 + gSlider.width, 35);
@@ -70,7 +70,7 @@ function draw(){
     v1.y = height - 29;
 
 
-    //console.log('height'+ height);
+
     rebound = true;
 
     counter++;
@@ -90,13 +90,13 @@ function ballUpdate(){
 
     if(rebound == true && v1.y <= height){
         velocity.y += 0.14 * 1.5 * gravity;
-        //console.log(velocity.y);
+
       }
 
       // if(velocity.y <= 0.01){
       //   velocity.y = 0;
       // }
-      //console.log('the ball veloicty need to be decrease');
+
 
 
 }

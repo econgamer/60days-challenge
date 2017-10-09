@@ -44,17 +44,6 @@ function getSunRise(){
 
       sunRiseTime = data.results.sunrise;
       sunSetTime = data.results.sunset;
-      console.log(`sunRise:${sunRiseTime}, sunSet:${sunSetTime}`);
-      // console.log(data);
-      // $('#output').html("<tr> <th style='width: 100px;'>Currency</th> <th>Rate</th> </tr>");
-      //
-      // for(var fxRate in data.rates) {
-      //     // $('#output').append(`<li>${fxRate}:${(data.rates[fxRate] * searchAmount).toFixed(5)}</li>`);
-      //
-      //     $('#output').append(`<tr><td>${fxRate}</td> <td>${(data.rates[fxRate] * searchAmount).toFixed(5)}</td>`);
-      //
-      // }
-
 
     },
     error: function(e){
@@ -81,14 +70,10 @@ function getTimeZone(){
       var sunSetPeriodOffset = 0;
 
       var sunRiseTimePeriod = sunRiseTime.charAt(sunRiseTime.length - 2);
-      console.log("Time period" + sunRiseTimePeriod);
 
       var sunSetTimePeriod = sunSetTime.charAt(sunSetTime.length - 2);
-      console.log("Time period" + sunSetTimePeriod);
 
-      console.log(data.countryName);
-
-
+      
 
       var timeOffset = parseInt(data.gmtOffset) / 60 / 60;
 

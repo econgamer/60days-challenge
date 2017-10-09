@@ -98,7 +98,6 @@ function draw() {
 function mousePressed() {
 
   var num = Math.floor(Math.random() * (26 - 0)) + 0;
-  console.log(num);
 
   melody.push(new Melody(soundFile[num]));
 }

@@ -53,7 +53,7 @@ function Player(x, y) {
 
           if( !( ((this.x + this.width/2) < (barrier.x - barrier.width/2)) || ((this.x - this.width/2) > (barrier.x + barrier.width/2)) ))
           {
-            console.log(this.check);
+
             if(this.check === false ){
               this.score += 1;
               console.log(this.score);
