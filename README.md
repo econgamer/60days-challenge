@@ -72,5 +72,5 @@ eager to learn new technologies in the up coming future.
 **Day 59 - Dandelion generator** - Make a danelion and photo it to a girl</p>
 **Day 60 - When it is dark enough, you can see the stars - Charles Austin Beard**</p>
 
-##Extra
-**Eyes test** - https://sixtydaysproject.herokuapp.com/eyeTesting/ - Design for my friend to prepare for his upcoming interview. User can adjust font size, change rate, font style in this app
+
+**Extra - Eyes test** - https://sixtydaysproject.herokuapp.com/eyeTesting/ - Design for my friend to prepare for his upcoming interview. User can adjust font size, change rate, font style in this app
