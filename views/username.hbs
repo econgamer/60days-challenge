@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RedSo</title>
+    <link rel="stylesheet" type="text/css" href="css/polling.css">
+  </head>
+  <body>
+
+    <div class="topic">
+      <h1>     </h1>
+      <h1>RedSo</h1>
+    </div>
+
+
+
+    <form class="choice1" method="POST" action="">
+
+      <input type="text" name="usernameReg"/>
+      <input class="submit" type="submit" value="submit" />
+
+    </form>
+
+
+    <div class="output">
+        <p>{{message}}</p>
+
+    </div>
+
+    {{#each result}}
+
+      <div class="result">{{this.vote}}</div>
+    {{/each}}
+
+
+
+  </body>
+
+  <script>
+
+
+
+
+  </script>
+
+</html>

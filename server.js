@@ -411,16 +411,102 @@ app.post('/orderSystem', (req, res) => {
 });
 
 
-
-
 // end of day 54
 
 
 
+// Red Soldier challenge
+
+var async = require('asyncawait/async');
+var await = require('asyncawait/await');
+
+
+
+var userreg = require('./public/redso/userreg');
+
+app.get('/redso', (req, res) => {
+    userreg.find({}).exec(function(err, data){
+      res.render('username.hbs', {
+        name: data
+      });
+    });
+  }, (err) => {
+    res.render('maintenance.hbs');
+});
 
 
 
 
+// app.post('/user', wrap(queue(this.register)));
+app.post('/redso', wrap(queue(async(register))));
+
+
+
+function hi(){
+  console.log('hi');
+}
+
+function register(req) {
+
+    console.log(req.body.usernameReg);
+    const existingUser = await(userreg.find({ name: req.body.usernameReg }));
+    console.log(existingUser);
+
+    if (existingUser != null && existingUser.length > 0) {
+      throw new Error(`User already exists ${req.body.usernameReg}`);
+    }
+
+    const userregStore = new userreg({ name: req.body.usernameReg});
+    // userregStore.save().then(() => {
+    //     console.log("Saved successfully");
+    //   }, (err) => {
+    //     res.render('maintenance.hbs');
+    //   });
+    console.log("running");
+  // Not necessarily safe to insert here! Race condition, two separate requests
+  // might have come in at the same time
+  await (userregStore.save().then(() => {
+        console.log("save successfully");
+      }, (err) => {
+        res.render('maintenance.hbs');
+      }));
+
+
+
+
+
+  return { userregStore };
+};
+
+
+function wrap(fn) {
+  return function(req, res, next) {
+    console.log("running");
+    fn(req).then(returnVal => res.json(returnVal)).catch(err => res.status(500).json({ message: err.message }));
+  };
+}
+
+// Wrap an async function `fn()` in a queue using promise chaining, so only
+// one instance of `fn()` can run at a time on this server.
+function queue(fn) {
+  let lastPromise = Promise.resolve();
+  return function(req) {
+    let returnedPromise = lastPromise.then(() => fn(req));
+    // If `returnedPromise` rejected, swallow the rejection for the queue,
+    // but `returnedPromise` rejections will still be visible outside the queue
+    lastPromise = returnedPromise.catch(() => {});
+    return returnedPromise;
+  };
+}
+
+
+
+
+
+
+
+
+// end of redso
 
 
 
