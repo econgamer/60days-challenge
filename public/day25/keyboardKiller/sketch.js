@@ -131,11 +131,14 @@ function draw(){
 
 
   // text(`${nf(minutes,2)}:${nf(seconds,2)}`, 5, 35);
-  if(seconds < 10){
-    text(`0${minutes}:0${seconds}`, 5, 35);
-  }else{
-    text(`0${minutes}:${seconds}`, 5, 35);
+  if(minutes != null && !isNaN(minutes) && !isNaN(seconds)){
+    if(seconds < 10){
+      text(`0${minutes}:0${seconds}`, 5, 35);
+    }else{
+      text(`0${minutes}:${seconds}`, 5, 35);
+    }
   }
+
 
 
   fill(0, 0, 0);
