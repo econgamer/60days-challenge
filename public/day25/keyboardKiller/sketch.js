@@ -128,7 +128,15 @@ function draw(){
   // time handler
   fill(0, 0, 0);
   textSize(35);
-  text(`${nf(minutes,2)}:${nf(seconds,2)}`, 5, 35);
+
+
+  // text(`${nf(minutes,2)}:${nf(seconds,2)}`, 5, 35);
+  if(seconds < 10){
+    text(`0${minutes}:0${seconds}`, 5, 35);
+  }else{
+    text(`0${minutes}:${seconds}`, 5, 35);
+  }
+
 
   fill(0, 0, 0);
   textSize(35);
