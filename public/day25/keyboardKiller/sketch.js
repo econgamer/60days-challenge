@@ -37,7 +37,7 @@ var bullets = [];
 var bg;
 
 //score
-var score = 0;
+var score = -1;
 
 
 
